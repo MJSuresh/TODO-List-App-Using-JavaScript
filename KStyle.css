@@ -1,0 +1,47 @@
+.confirm-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    /* Position relative to the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Center horizontally and vertically */
+}
+
+.message-box {
+    background-color: #fff;
+    text-align: center;
+    font-family: Arial;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.button-box {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.yes-button,
+.no-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.yes-button {
+    background-color: green;
+}
+
+.no-button {
+    background-color: red;
+}

@@ -1,0 +1,475 @@
+html,
+body {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(47, 103, 187);
+}
+
+
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+    color: black;
+    cursor: pointer;
+}
+
+
+h2 {
+    margin: 0 auto;
+}
+
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: purple;
+    color: white;
+    height: 5%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+footer {
+    background-color: purple;
+    color: white;
+    height: 5%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forms {
+    height: 50%;
+    width: 50%;
+    margin-left:25% ;
+    display: flex;
+    justify-content: space-between;
+}
+
+form input {
+    /* width: 85%; */
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.171);
+    border-radius: 8px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    flex: 1 1 0%;
+    background-color: rgba(255, 255, 255, 0.932);
+}
+
+.forms button {
+    /* width: 10%; */
+    padding:18px;
+    background-color: rgba(36, 236, 36, 0.932);
+    border: 1px solid rgba(255, 255, 255, 0.171);
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* transform: translate(10px,10px); */
+}
+
+
+main {
+    width: 100%;
+    height: 90%;
+    margin: 0 auto;
+    padding: 0;
+    flex: 1 1 0%;
+    /* background-image: url(Yellow1.jpg); */
+    background-image: url(BgNew1.avif);
+    background-size: cover;
+}
+
+
+.middle {
+    height: 100%;
+}
+
+
+.left {
+    text-align: center;
+    height: 20%;
+    line-height: 50px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #ebdb00;
+    font-weight: bold;
+    font-size: 20px;
+    height: 50%;
+    letter-spacing: 1.3px;
+    transition: background-color 0.3s ease-in-out;
+    /* background-color: rgba(0, 0, 0, 0.05); */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    padding-left: 25%;
+    
+}
+.navbar a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* White background on hover */
+    color: #ffae00; /* Black text on hover */
+  }
+  
+  .navbar a.active {
+    /* background-color: rgba(255, 255, 255, 0.15); Slightly darker background for active link */
+    color: #12f8b3; /* Black text for active link */
+    text-decoration: underline;
+    transition: color 0.2s ease-in-out;
+
+  }
+
+.right {
+    color: white;
+    height: 80%;
+    width: 50%;
+    margin-left: 25%;
+}
+
+
+#tasks{
+    height: 97%;
+    overflow: auto;
+    scrollbar-width: 0.5px;
+    margin: 0;
+    padding: 0;
+}
+
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #d1e5ff;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#642bff, #ff22e6);
+    border-radius: 10px;
+}
+
+/* #tasks::-webkit-scrollbar { display: none; } */
+
+#tasks .task{
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.74);
+    padding: 0.6rem;
+    border-radius: 9px;
+    margin-bottom: 5px;
+}
+
+/* Target the task list item when hovering */
+li.task:hover {
+    border: 3px solid #0ffa5d;
+    border-radius: 5px;
+  }
+
+  li.task{
+    transition: 0.05s;
+  }
+  
+
+#tasks .task .content input,
+#tasks .task .actions button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+
+.task .content {
+    flex: 1 1 0%;
+    display: flex;
+    margin: 0 0;
+}
+
+
+.task .content .text {
+    color: black;
+    font-size: 1rem;
+    width: 98%;
+    display: block;
+    transition: 0.4s;
+}
+
+.task .actions {
+    display: flex;
+    margin: 0 -0.5rem;
+}
+
+.task .actions button {
+    cursor: pointer;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    /* transition: 0.4s; */
+}
+
+
+.task .actions button:hover {
+    opacity: 0.7;
+}
+
+
+.task .actions button:active {
+    opacity: 0.6;
+}
+
+
+.task .actions .delete,
+.task .actions .edit {
+    color: crimson;
+}
+
+.wrap-css {
+    text-overflow: ellipsis;
+}
+
+.material-symbols-outlined:hover {
+    opacity: 0.75;
+}
+
+@media screen and (max-width: 600px) {
+
+    main {
+        background-image: url(Yellow2.jpg);
+    }
+
+    .left .forms {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .forms {
+        width: 90%;
+        margin-left: 5% ; 
+    }
+
+    /* form input {
+        padding: 10px;
+    } */
+    /* form input {
+        width: 70%;
+        padding: 10px;
+        margin-top: 18px;
+        margin-left: 2.5%;
+    }
+
+    .middle .left .forms .form-control-button {
+        margin-left: 1%;
+        margin-right: 2.5%;
+        margin-top: 18px;
+        padding-top: 7px;
+    } */
+
+    .navbar a {
+        font-size: 18px;
+        height: 50%;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        padding-left: 5%;
+    }
+
+    .right {
+        margin-left: 2.5%;
+        width: 95%;
+    }
+
+    #tasks .task{
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+
+    #tasks .task .content input {
+        padding-top: 4px;
+    }
+
+}
+
+
+@media screen and (min-width: 601px) {
+    @media screen and (max-width: 912px) {
+
+        main {
+            background-image: url(Yellow2.jpg);
+        }
+
+        .forms {
+            width: 80%;
+            margin-left: 10% ;
+            height: 40%;
+        }
+
+        
+/* 
+        form input {
+            width: 50%;
+            padding: 15px;
+            margin-top: 30px;
+            margin-left: 13%;
+        }
+
+        .middle .left .forms .form-control-button {
+            padding: 15px;
+            margin-left: 1%;
+            margin-right: 13%;
+            margin-top: 18px;
+        } */
+
+        .navbar a {
+            margin-top: 30px;
+            font-size: 18px;
+            height: 50%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            padding-left: 10%;
+        }
+
+        .right {
+            margin-left: 10%;
+            width: 80%;
+            margin-left: 10%;
+        }
+
+        #tasks .task {
+            padding: 15px;
+            margin-bottom: 5px;
+        }
+
+        #tasks .task .content input{
+            padding-top: 4px;
+        }
+
+    }
+}
+
+/* css for confirmation window */
+.confirm-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    /* Position relative to the viewport */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Center horizontally and vertically */
+}
+
+.message-box {
+    background-color: #fff;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.button-box {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.yes-button,
+.no-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.yes-button {
+    background-color: green;
+}
+
+.yes-button:hover {
+    opacity: 0.7;
+}
+
+.no-button {
+    background-color: red;
+}
+
+.no-button:hover {
+    opacity: 0.7;
+}
+
+.no_task_span {
+    font-size: 23px;
+    color: #642bff;
+    font-weight: 500;
+}
+
+/* for showNotification */
+
+#notification-popup {
+    position: fixed;
+    bottom: 6%; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px; /* Adjust as needed */
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 999; /* Ensure it's above other content */
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    color: white;
+    text-align: center;
+    font-weight: bold; 
+    transition: opacity 0.3s ease-in-out; /* Smooth fade-in/out effect */
+  }
+
+#notification-popup.success {
+    background-color: green; /* Green for success */
+  }
+  
+  #notification-popup.error {
+    background-color: red; /* Red for error */
+  }
+
+  #notification-popup.orange {
+    background-color: rgb(255, 136, 0); /* Orange for progress */
+  }
+  

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSDemo2</title>
+</head>
+<style>
+    #fname-emessage {
+        color: red;
+    }
+</style>
+
+<body>
+
+    <!-- <form id="form-demo" name="form">
+        <input type="text" name="form" value="Melapoondi J"><br><br>
+        <input type="text" name="form" value="Suresh"><br><br>
+        <button type="button" value="Click Me!">Submit</button>
+    </form> -->
+
+    <pre><p id="demo"></p></pre>
+    <form action="#" id="myForm" onsubmit="return myFormFun()">
+        fname: <input type="text" name="fname" id="fname">
+        <span id="fname-emessage"></span>
+        <br><br>
+        lname: <input type="text" name="lname"><br><br>
+        <input type="submit" value="Submit" onclick="mySub()">
+    </form>
+
+    <p id="one">DOM Style 1</p>
+    <p id="two">DOM Style 2</p>
+
+    <input type="text" name="nfield" id="nfield">
+    <input type="submit" value="Submit" onclick="mySub()">
+    <p id="demo2"></p>
+
+    <div onmousedown="mDown(this)" onmouseup="mUp(this)"
+        style="height: 100px; width: 100px; border: 1px solid black; background-color: black; color: white;">
+        click me!</div>
+
+    <script>
+        // const str = document.forms['form-demo'];
+        // for (let index = 0; index < str.length; index++) {
+        //     console.log(str[index].value) + "<br>";
+        // }
+
+        function myFormFun() {
+            let x = document.forms['myForm']['fname'].value;
+            if (x == "" || x == " ") {
+                document.getElementById('fname-emessage').innerHTML = "<br>" + "*Type valid data...!!!";
+                return false;
+            }
+        }
+
+        try {
+            document.GetElementById('demo').innerHTML = "Try & catch block";
+        }
+        catch (err) {
+            document.getElementById('demo').innerHTML = err.message; // error objects - name & message
+        }
+
+        function mySub() {
+            let val = document.getElementById('nfield').value;
+            try {
+                if (val.trim() == '') throw 'empty';
+                if (isNaN(val)) throw 'not a number';
+                val = Number(val);
+                if (val < 5) throw 'too low';
+                if (val > 10) throw 'too high';
+            }
+            catch (err) {
+                document.getElementById('demo2').innerHTML = "Input is " + err;
+            }
+            finally {
+                document.getElementById("demo").value = ""; // make input as empty
+            }
+        }
+
+        function mDown(obj) {
+            obj.innerHTML = "now unclick";
+            obj.style.backgroundColor = 'red';
+        }
+        function mUp(obj) {
+            obj.innerHTML = "tq (click again)";
+        }
+
+      
+
+
+    </script>
+
+</body>
+
+</html>

@@ -80,15 +80,6 @@ window.addEventListener("load", () => {
   todos = JSON.parse(localStorage.getItem("todos")) || [];
   completedTodos = JSON.parse(localStorage.getItem("completedTodos")) || [];
 
-  // todos.forEach((todo) => {
-  //   if (!todo == "") {
-  //     display(todo);
-  //     taskBox.innerHTML = li2 || `<span>You don't have any task here</span>`;
-  //   } else {
-  //     console.log("no task found");
-  //   }
-  // });
-
   let navbarItems = document.querySelectorAll(".navbar a");
 
   navbarItems.forEach((item) => {

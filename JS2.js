@@ -11,7 +11,6 @@ let li2 = "";
 function showNotification(message, type) {
   let popUp = document.createElement("div");
   popUp.id = "notification-popup";
-  //  popUp.classList.add('hidden');
   popUp.classList.add(type); // Add class for color (e.g., "success", "error")
 
   let content = document.createElement("div");
@@ -21,7 +20,7 @@ function showNotification(message, type) {
   popUp.appendChild(content);
   document.body.appendChild(popUp);
 
-  // Auto-hide after a few seconds (optional)
+  // Auto-hide after a few seconds
   setTimeout(() => {
     document.body.removeChild(popUp);
   }, 1000);
@@ -68,6 +67,7 @@ function confirmFunction(message, callback) {
     callback(false);
     removeConfirmationBox();
   }
+
 }
 
 window.addEventListener("load", () => {
@@ -95,36 +95,32 @@ window.addEventListener("load", () => {
     item.addEventListener("click", () => {
       document.querySelector(".active").classList.remove("active"); // Remove any existing active classes
       item.classList.add("active"); // Add active class to the clicked item
-
-      // Print the ID of the newly active navbar item:
     });
   });
-
-  // });
-  // let li = "";
-  // todos.forEach((todo) => {
-  //   li += display(todo);
-  //   console.log(li);
-  //   taskBox.innerHTML = li || `<span>You don't have any task here</span>`;
-  // });
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     input = document.querySelector("#title");
     let task = input.value.trim();
-    if (!todos.includes(task) && !task=='') {
+    if (!todos.includes(task) && !task == "") {
       // adding the task into local storage
       todos.push(task);
       localStorage.setItem("todos", JSON.stringify(todos));
-      all.click();
-      // display(task);
-      // taskBox.innerHTML = li2 || `<span>You don't have any task here</span>`;
+
+      if (document.querySelector(".active").id == "All") {
+        all.click();
+      } else if (document.querySelector(".active").id == "Progress") {
+        progress.click();
+      } else {
+        completed.click();
+      }
+
       input.value = "";
       showNotification("Task added successfully.", "success");
-    } else if(task==''){
+    } else if (task == "") {
       showNotification("Empty Task not accepted.", "error");
       input.value = "";
-    } else{
+    } else {
       showNotification("Task already added.", "error");
       input.value = "";
     }
@@ -139,8 +135,8 @@ window.addEventListener("load", () => {
       }
       taskBox.innerHTML = li2;
     } else {
-      // taskBox.innerHTML = `<span class="no_task_span">No Task were added</span>`;
-      showNotification("No Task were added.", "error");
+      taskBox.innerHTML = `<span class="no_task_span">No Task were added</span>`;
+      //   showNotification("No Task were added.", "error");
     }
   });
 
@@ -160,14 +156,12 @@ window.addEventListener("load", () => {
         }
       }
       progress_displayedTodos = [];
-      taskBox.innerHTML = li2;
-      if(li2==''){
-        showNotification("No pending Task here.", "error");
-      }
+      taskBox.innerHTML =
+        li2 ||
+        `<span class="no_task_span">You don't have any Pending Task</span>`;
     } else {
-      // taskBox.innerHTML = `<span class="no_task_span">You don't have any Pending Task</span>`;
-      showNotification("No Task were added.", "error");
-      
+      taskBox.innerHTML = `<span class="no_task_span">You don't have any Pending Task</span>`;
+      //   showNotification("No Task were added.", "error");
     }
   });
 
@@ -186,11 +180,9 @@ window.addEventListener("load", () => {
       }
       completed_displayedTodos = [];
       taskBox.innerHTML = li2;
-      
     } else {
-      // taskBox.innerHTML = `<span class="no_task_span">You don't have any Completed Task</span>`;
-      showNotification("No Task were added.", "error");
-      
+      taskBox.innerHTML = `<span class="no_task_span">You don't have any Completed Task</span>`;
+      //   showNotification("No Task were added.", "error");
     }
   });
 });
@@ -226,53 +218,40 @@ function display(task) {
 function checkbox_function(check_task) {
   const update_check_task = check_task.parentElement.lastElementChild.value;
 
-  if (document.querySelector(".active").id == "Completed") {
+  if (
+    document.querySelector(".active").id == "Completed" ||
+    (check_task.style.backgroundColor == "green" &&
+      document.querySelector(".active").id == "All")
+  ) {
     confirmFunction("Not completed the TASK?", function (result) {
       if (result) {
         completedTodos.splice(completedTodos.indexOf(update_check_task), 1);
         localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
         showNotification("Task moved to Progress.", "orange");
-        completed.click();
+        if (document.querySelector(".active").id == "Completed") {
+          completed.click();
+        } else {
+          all.click();
+        }
       }
     });
-  } else if (document.querySelector(".active").id == "Progress") {
+  } else if (
+    document.querySelector(".active").id == "Progress" ||
+    (check_task.style.backgroundColor == "orange" &&
+      document.querySelector(".active").id == "All")
+  ) {
     confirmFunction("Completed the TASK?", function (result) {
       if (result) {
         completedTodos.push(update_check_task);
         localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
         showNotification("Task moved to Completed.", "success");
-        progress.click();
+        if (document.querySelector(".active").id == "Progress") {
+          progress.click();
+        } else {
+          all.click();
+        }
       }
     });
-  } else {
-    if (
-      check_task.parentElement.querySelector("span").style.backgroundColor ==
-      "orange"
-    ) {
-      confirmFunction("Completed the TASK?", function (result) {
-        if (result) {
-          completedTodos.push(update_check_task);
-          localStorage.setItem(
-            "completedTodos",
-            JSON.stringify(completedTodos)
-          );
-          showNotification("Task moved to Completed.", "success");
-          all.click();
-        }
-      });
-    } else {
-      confirmFunction("Not completed the TASK?", function (result) {
-        if (result) {
-          completedTodos.splice(completedTodos.indexOf(update_check_task), 1);
-          localStorage.setItem(
-            "completedTodos",
-            JSON.stringify(completedTodos)
-          );
-          showNotification("Task moved to Progress.", "orange");
-          all.click();
-        }
-      });
-    }
   }
 }
 
@@ -306,25 +285,22 @@ function edit_function(edit_task) {
       all.click();
     }
     showNotification("Task updated.", "success");
-  } else if (document.querySelector(".active").id == "Progress") {
+  } else if (
+    document.querySelector(".active").id == "Progress" ||
+    (edit_task.parentElement.previousElementSibling.querySelector("span").style
+      .backgroundColor == "orange" &&
+      document.querySelector(".active").id == "All")
+  ) {
     const indexToChangeT = todos.indexOf(taskBefore);
     todos.splice(indexToChangeT, 1);
     todos.push(update_edit_task.value);
     localStorage.setItem("todos", JSON.stringify(todos));
-    progress.click();
-    showNotification("Task updated.", "success");
-  } else {
-    if (
-      edit_task.parentElement.previousElementSibling.querySelector("span").style
-        .backgroundColor == "orange"
-    ) {
-      const indexToChangeT = todos.indexOf(taskBefore);
-      todos.splice(indexToChangeT, 1);
-      todos.push(update_edit_task.value);
-      localStorage.setItem("todos", JSON.stringify(todos));
+    if (document.querySelector(".active").id == "Progress") {
+      progress.click();
+    } else {
       all.click();
-      showNotification("Task updated.", "success");
     }
+    showNotification("Task updated.", "success");
   }
 }
 
@@ -334,7 +310,12 @@ function delete_function(delete_task) {
       ".text"
     ).value;
 
-  if (document.querySelector(".active").id == "Completed") {
+  if (
+    document.querySelector(".active").id == "Completed" ||
+    (delete_task.parentElement.previousElementSibling.querySelector("span")
+      .style.backgroundColor == "green" &&
+      document.querySelector(".active").id == "All")
+  ) {
     confirmFunction("Want to delete the TASK?", function (result) {
       if (result) {
         todos.splice(todos.indexOf(update_delete_task), 1);
@@ -342,45 +323,30 @@ function delete_function(delete_task) {
         localStorage.setItem("todos", JSON.stringify(todos));
         localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
         showNotification("Task deleted.", "error");
-        completed.click();
+        if (document.querySelector(".active").id == "Completed") {
+          completed.click();
+        } else {
+          all.click();
+        }
       }
     });
-  } else if (document.querySelector(".active").id == "Progress") {
+  } else if (
+    document.querySelector(".active").id == "Progress" ||
+    (delete_task.parentElement.previousElementSibling.querySelector("span")
+      .style.backgroundColor == "orange" &&
+      document.querySelector(".active").id == "All")
+  ) {
     confirmFunction("Want to delete the TASK?", function (result) {
       if (result) {
         todos.splice(todos.indexOf(update_delete_task), 1);
         localStorage.setItem("todos", JSON.stringify(todos));
         showNotification("Task deleted.", "error");
-        progress.click();
+        if (document.querySelector(".active").id == "Progress") {
+          progress.click();
+        } else {
+          all.click();
+        }
       }
     });
-  } else {
-    if (
-      delete_task.parentElement.previousElementSibling.querySelector("span")
-        .style.backgroundColor == "orange"
-    ) {
-      confirmFunction("Want to delete the TASK?", function (result) {
-        if (result) {
-          todos.splice(todos.indexOf(update_delete_task), 1);
-          localStorage.setItem("todos", JSON.stringify(todos));
-          showNotification("Task deleted.", "error");
-          all.click();
-        }
-      });
-    } else {
-      confirmFunction("Want to delete the TASK?", function (result) {
-        if (result) {
-          todos.splice(todos.indexOf(update_delete_task), 1);
-          localStorage.setItem("todos", JSON.stringify(todos));
-          completedTodos.splice(completedTodos.indexOf(update_delete_task), 1);
-          localStorage.setItem(
-            "completedTodos",
-            JSON.stringify(completedTodos)
-          );
-          showNotification("Task deleted.", "error");
-          all.click();
-        }
-      });
-    }
   }
 }

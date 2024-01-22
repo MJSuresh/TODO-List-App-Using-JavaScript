@@ -11,7 +11,6 @@ body {
     background-color: rgb(47, 103, 187);
 }
 
-
 .material-symbols-outlined {
     font-variation-settings:
         'FILL' 0,
@@ -22,26 +21,24 @@ body {
     cursor: pointer;
 }
 
-
 h2 {
     margin: 0 auto;
 }
-
 
 header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: purple;
+    /* background-color: purple; */
+    background-color: black;
     color: white;
     height: 5%;
     width: 100%;
     margin: 0 auto;
 }
 
-
 footer {
-    background-color: purple;
+    background-color: black;
     color: white;
     height: 5%;
     width: 100%;
@@ -53,7 +50,7 @@ footer {
 .forms {
     height: 50%;
     width: 50%;
-    margin-left:25% ;
+    padding-left: 25%;
     display: flex;
     justify-content: space-between;
 }
@@ -66,12 +63,13 @@ form input {
     margin-top: 20px;
     margin-bottom: 10px;
     flex: 1 1 0%;
-    background-color: rgba(255, 255, 255, 0.932);
+    /* background-color: rgba(255, 255, 255, 0.932); */
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .forms button {
     /* width: 10%; */
-    padding:18px;
+    padding: 18px;
     background-color: rgba(36, 236, 36, 0.932);
     border: 1px solid rgba(255, 255, 255, 0.171);
     border-radius: 8px;
@@ -87,23 +85,19 @@ form input {
     /* transform: translate(10px,10px); */
 }
 
-
 main {
     width: 100%;
     height: 90%;
     margin: 0 auto;
     padding: 0;
     flex: 1 1 0%;
-    /* background-image: url(Yellow1.jpg); */
-    background-image: url(BgNew1.avif);
+    background-image: url(BgNew1.jpg);
     background-size: cover;
 }
-
 
 .middle {
     height: 100%;
 }
-
 
 .left {
     text-align: center;
@@ -128,20 +122,19 @@ main {
     align-items: center;
     width: 50%;
     padding-left: 25%;
-    
 }
+
 .navbar a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* White background on hover */
-    color: #ffae00; /* Black text on hover */
-  }
-  
-  .navbar a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffae00;
+}
+
+.navbar a.active {
     /* background-color: rgba(255, 255, 255, 0.15); Slightly darker background for active link */
-    color: #12f8b3; /* Black text for active link */
+    color: #12f8b3;
     text-decoration: underline;
     transition: color 0.2s ease-in-out;
-
-  }
+}
 
 .right {
     color: white;
@@ -150,8 +143,7 @@ main {
     margin-left: 25%;
 }
 
-
-#tasks{
+#tasks {
     height: 97%;
     overflow: auto;
     scrollbar-width: 0.5px;
@@ -159,28 +151,23 @@ main {
     padding: 0;
 }
 
-
 ::-webkit-scrollbar {
     width: 7px;
 }
 
-
 ::-webkit-scrollbar-track {
     background: #d1e5ff;
 }
-
 
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(#642bff, #ff22e6);
     border-radius: 10px;
 }
 
-/* #tasks::-webkit-scrollbar { display: none; } */
-
-#tasks .task{
+#tasks .task {
     display: flex;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.74);
+    background: rgba(255, 255, 255, 0.8);
     padding: 0.6rem;
     border-radius: 9px;
     margin-bottom: 5px;
@@ -190,12 +177,11 @@ main {
 li.task:hover {
     border: 3px solid #0ffa5d;
     border-radius: 5px;
-  }
+}
 
-  li.task{
+li.task {
     transition: 0.05s;
-  }
-  
+}
 
 #tasks .task .content input,
 #tasks .task .actions button {
@@ -205,13 +191,11 @@ li.task:hover {
     background: none;
 }
 
-
 .task .content {
     flex: 1 1 0%;
     display: flex;
     margin: 0 0;
 }
-
 
 .task .content .text {
     color: black;
@@ -234,16 +218,13 @@ li.task:hover {
     /* transition: 0.4s; */
 }
 
-
 .task .actions button:hover {
     opacity: 0.7;
 }
 
-
 .task .actions button:active {
     opacity: 0.6;
 }
-
 
 .task .actions .delete,
 .task .actions .edit {
@@ -258,38 +239,100 @@ li.task:hover {
     opacity: 0.75;
 }
 
-@media screen and (max-width: 600px) {
+/* for showNotification */
+#notification-popup {
+    position: fixed;
+    bottom: 6%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 999;
+    /* Ensure it's above other content */
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    transition: opacity 0.3s ease-in-out;
+    /* Smooth fade-in/out effect */
+}
 
+#notification-popup.success {
+    background-color: green;
+}
+
+#notification-popup.error {
+    background-color: red;
+}
+
+#notification-popup.orange {
+    background-color: rgb(255, 136, 0);
+}
+
+.no_task_span {
+    font-size: 20px;
+    color: white;
+    font-weight: bolder;
+    text-shadow: 2px 0px 1px black;
+}
+
+@media screen and (min-width: 281px) {
+    @media screen and (max-width: 600px) {
+
+        main {
+            background-image: url(BgNew2.jpg);
+        }
+
+        .left .forms {
+            width: 90%;
+            padding-left: 5%;
+        }
+
+        .navbar a {
+            font-size: 18px;
+            height: 50%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            padding-left: 5%;
+        }
+
+        .right {
+            margin-left: 2.5%;
+            width: 95%;
+        }
+
+        #tasks .task {
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+
+        #tasks .task .content input {
+            padding-top: 4px;
+        }
+    }
+}
+
+@media screen and (max-width: 280px) {
     main {
-        background-image: url(Yellow2.jpg);
+        background-image: url(BgNew2.jpg);
     }
 
     .left .forms {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .forms {
         width: 90%;
-        margin-left: 5% ; 
+        padding-left: 1.5%;
     }
 
-    /* form input {
-        padding: 10px;
-    } */
-    /* form input {
-        width: 70%;
-        padding: 10px;
-        margin-top: 18px;
-        margin-left: 2.5%;
+    form input{
+        padding: 18px 15px;
     }
 
-    .middle .left .forms .form-control-button {
-        margin-left: 1%;
-        margin-right: 2.5%;
-        margin-top: 18px;
-        padding-top: 7px;
-    } */
+    .forms button{
+        padding: 18px 15px;
+    }
 
     .navbar a {
         font-size: 18px;
@@ -308,7 +351,7 @@ li.task:hover {
         width: 95%;
     }
 
-    #tasks .task{
+    #tasks .task {
         padding: 10px;
         margin-bottom: 5px;
     }
@@ -317,37 +360,27 @@ li.task:hover {
         padding-top: 4px;
     }
 
-}
+    #notification-popup {
+        width: 200px;
+    }
 
+    .no_task_span {
+        font-size: 16px;
+    }
+}
 
 @media screen and (min-width: 601px) {
     @media screen and (max-width: 912px) {
 
         main {
-            background-image: url(Yellow2.jpg);
+            background-image: url(BgNew2.jpg);
         }
 
         .forms {
             width: 80%;
-            margin-left: 10% ;
+            padding-left: 10%;
             height: 40%;
         }
-
-        
-/* 
-        form input {
-            width: 50%;
-            padding: 15px;
-            margin-top: 30px;
-            margin-left: 13%;
-        }
-
-        .middle .left .forms .form-control-button {
-            padding: 15px;
-            margin-left: 1%;
-            margin-right: 13%;
-            margin-top: 18px;
-        } */
 
         .navbar a {
             margin-top: 30px;
@@ -373,7 +406,7 @@ li.task:hover {
             margin-bottom: 5px;
         }
 
-        #tasks .task .content input{
+        #tasks .task .content input {
             padding-top: 4px;
         }
 
@@ -436,40 +469,3 @@ li.task:hover {
 .no-button:hover {
     opacity: 0.7;
 }
-
-.no_task_span {
-    font-size: 23px;
-    color: #642bff;
-    font-weight: 500;
-}
-
-/* for showNotification */
-
-#notification-popup {
-    position: fixed;
-    bottom: 6%; /* Adjust as needed */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 250px; /* Adjust as needed */
-    padding: 15px;
-    border-radius: 5px;
-    z-index: 999; /* Ensure it's above other content */
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
-    color: white;
-    text-align: center;
-    font-weight: bold; 
-    transition: opacity 0.3s ease-in-out; /* Smooth fade-in/out effect */
-  }
-
-#notification-popup.success {
-    background-color: green; /* Green for success */
-  }
-  
-  #notification-popup.error {
-    background-color: red; /* Red for error */
-  }
-
-  #notification-popup.orange {
-    background-color: rgb(255, 136, 0); /* Orange for progress */
-  }
-  

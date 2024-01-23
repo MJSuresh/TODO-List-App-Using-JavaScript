@@ -19,11 +19,13 @@
     <main>
         <div class="middle">
             <div class="left">
-                <form class="forms" id="new-task-form">
-                    <input type="text" id="title" maxlength="100" placeholder="Add Daily Task"
-                        class="form-control-input wrap-css" required>
-                    <button type="submit" id="submit" class="form-control-button">Save</button>
-                </form>
+                <div class="left-one">
+                    <form class="forms" id="new-task-form">
+                        <input type="text" id="title" maxlength="100" placeholder="Add Daily Task"
+                            class="form-control-input wrap-css" required>
+                        <button type="submit" id="submit" class="form-control-button">Save</button>
+                    </form>
+                </div>
                 <div class="navbar">
                     <a href="#" class="active" id="All">All</a>
                     <a href="#" id="Progress">Progress</a>
@@ -34,7 +36,7 @@
             <div class="right">
 
                 <ul id="tasks">
-    <!--          <li class="task">
+                    <!--          <li class="task">
                         <div class="content">
                             <span type="checkbox" onclick="checkbox_function(this)" id="myCheckbox"
                                 class="material-symbols-outlined"

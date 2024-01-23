@@ -67,42 +67,47 @@ main {
     /* line-height: 50px; */
 }
 
+.left-one{
+    height: 40%;
+    width: 50%;
+    /* align-items: center; */
+    position: relative;
+    top: 0; /* Positions the element at the top of the page */
+  left: 50%; /* Positions the element horizontally centered */
+  transform: translate(-50%,40%);
+/* padding-top: 10px; */
+}
+
 .forms {
     height: 30%;
-    width: 50%;
-    padding-left: 25%;
+    width: 100%;
+    
     display: flex;
     justify-content: space-between;
 }
 
 form input {
-    /* width: 85%; */
     padding: 18px;
     border: 1px solid rgba(255, 255, 255, 0.171);
     border-radius: 8px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+ 
     flex: 1 1 0%;
-    /* background-color: rgba(255, 255, 255, 0.932); */
     background-color: rgba(255, 255, 255, 0.8);
 }
 
 .forms button {
-    /* width: 10%; */
     padding: 18px;
     background-color: rgba(36, 236, 36, 0.932);
     border: 1px solid rgba(255, 255, 255, 0.171);
     border-radius: 8px;
     font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 10px;
+
     cursor: pointer;
     text-align: center;
     margin-left: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* transform: translate(10px,10px); */
 }
 
 .forms button:hover {

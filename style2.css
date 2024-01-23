@@ -47,6 +47,26 @@ footer {
     justify-content: center;
 }
 
+main {
+    width: 100%;
+    height: 90%;
+    margin: 0 auto;
+    padding: 0;
+    flex: 1 1 0%;
+    background-image: url(ToDo_BG_Desktop.jpg);
+    background-size: cover;
+}
+
+.middle {
+    height: 100%;
+}
+
+.left {
+    text-align: center;
+    height: 20%;
+    /* line-height: 50px; */
+}
+
 .forms {
     height: 30%;
     width: 50%;
@@ -85,24 +105,8 @@ form input {
     /* transform: translate(10px,10px); */
 }
 
-main {
-    width: 100%;
-    height: 90%;
-    margin: 0 auto;
-    padding: 0;
-    flex: 1 1 0%;
-    background-image: url(ToDo_BG_Desktop.jpg);
-    background-size: cover;
-}
-
-.middle {
-    height: 100%;
-}
-
-.left {
-    text-align: center;
-    height: 20%;
-    line-height: 50px;
+.forms button:hover {
+    background-color: rgb(18, 209, 18);
 }
 
 .navbar a {
@@ -112,9 +116,11 @@ main {
     font-size: 20px;
     /* height: 50%; */
     letter-spacing: 1.3px;
-    transition: background-color 0.3s ease-in-out;
     /* background-color: rgba(0, 0, 0, 0.5); */
-    margin-top: 10%; /* last edited */
+    transition: background-color 0.3s ease-in-out;
+    /* last edited */
+    margin-top: 10%;
+    padding: 10px;
 }
 
 .navbar {
@@ -251,24 +257,24 @@ li.task {
     width: 250px;
     padding: 15px;
     border-radius: 5px;
-    z-index: 999;
     /* Ensure it's above other content */
+    z-index: 999;
     color: white;
     text-align: center;
     font-weight: bold;
-    transition: opacity 0.3s ease-in-out;
     /* Smooth fade-in/out effect */
+    transition: opacity 0.3s ease-in-out;
 }
 
 #notification-popup.success {
     background-color: green;
 }
 
-#notification-popup.error {
+#notification-popup.warning {
     background-color: red;
 }
 
-#notification-popup.orange {
+#notification-popup.process {
     background-color: rgb(255, 136, 0);
 }
 
@@ -294,6 +300,8 @@ li.task {
         .navbar a {
             font-size: 18px;
             height: 50%;
+            margin-top: 15%;
+            padding: 10px;
         }
 
         .navbar {
@@ -329,17 +337,19 @@ li.task {
         padding-left: 1.5%;
     }
 
-    form input{
+    form input {
         padding: 18px 15px;
     }
 
-    .forms button{
+    .forms button {
         padding: 18px 15px;
     }
 
     .navbar a {
         font-size: 18px;
         height: 50%;
+        margin-top: 25%;
+        padding: 10px;
     }
 
     .navbar {
@@ -389,6 +399,7 @@ li.task {
             margin-top: 30px;
             font-size: 18px;
             height: 50%;
+            padding: 10px;
         }
 
         .navbar {
@@ -421,12 +432,12 @@ li.task {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: fixed;
     /* Position relative to the viewport */
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     /* Center horizontally and vertically */
+    transform: translate(-50%, -50%);
 }
 
 .message-box {

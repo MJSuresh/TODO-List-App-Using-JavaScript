@@ -1,8 +1,7 @@
 let taskBefore;
-let completed, all, progress;
+let all, progress, completed;
 let todos = [];
 let completedTodos = [];
-let all_displayedTodos = [];
 let progress_displayedTodos = [];
 let completed_displayedTodos = [];
 let input;
@@ -11,7 +10,7 @@ let li2 = "";
 function showNotification(message, type) {
   let popUp = document.createElement("div");
   popUp.id = "notification-popup";
-  popUp.classList.add(type); // Add class for color (e.g., "success", "error")
+  popUp.classList.add(type); // Add class for color (e.g., "success", "warning", "process")
 
   let content = document.createElement("div");
   content.classList.add("popup-content");
@@ -67,7 +66,6 @@ function confirmFunction(message, callback) {
     callback(false);
     removeConfirmationBox();
   }
-
 }
 
 window.addEventListener("load", () => {
@@ -81,7 +79,6 @@ window.addEventListener("load", () => {
   completedTodos = JSON.parse(localStorage.getItem("completedTodos")) || [];
 
   let navbarItems = document.querySelectorAll(".navbar a");
-
   navbarItems.forEach((item) => {
     item.addEventListener("click", () => {
       document.querySelector(".active").classList.remove("active"); // Remove any existing active classes
@@ -93,10 +90,21 @@ window.addEventListener("load", () => {
     e.preventDefault();
     input = document.querySelector("#title");
     let task = input.value.trim();
-    if (!todos.includes(task) && !task == "") {
-      // adding the task into local storage
+
+    // for not accepting existing task which is in any format such as uppercase/lowercase
+
+    // let flag=true;
+    // for(let i=0;i<todos.length;i++){
+    //     if(todos[i].toLowerCase()==task.toLowerCase()){
+    //       flag=false;
+    //     }
+    // }
+
+    // if (!todos.includes(task) && task!="" && flag) {
+
+    if (!todos.includes(task) && task != "") {
       todos.push(task);
-      localStorage.setItem("todos", JSON.stringify(todos));
+      localStorage.setItem("todos", JSON.stringify(todos)); // adding the task into local storage
 
       if (document.querySelector(".active").id == "All") {
         all.click();
@@ -109,11 +117,11 @@ window.addEventListener("load", () => {
       input.value = "";
       showNotification("Task added successfully.", "success");
     } else if (task == "") {
-      showNotification("Empty Task not accepted.", "error");
       input.value = "";
+      showNotification("Empty Task not accepted.", "warning");
     } else {
-      showNotification("Task already added.", "error");
       input.value = "";
+      showNotification("Task already added.", "warning");
     }
   });
 
@@ -127,7 +135,7 @@ window.addEventListener("load", () => {
       taskBox.innerHTML = li2;
     } else {
       taskBox.innerHTML = `<span class="no_task_span">No Task were added</span>`;
-      //   showNotification("No Task were added.", "error");
+      //   showNotification("No Task were added.", "warning");
     }
   });
 
@@ -152,7 +160,7 @@ window.addEventListener("load", () => {
         `<span class="no_task_span">You don't have any Pending Task</span>`;
     } else {
       taskBox.innerHTML = `<span class="no_task_span">You don't have any Pending Task</span>`;
-      //   showNotification("No Task were added.", "error");
+      //   showNotification("No Task were added.", "warning");
     }
   });
 
@@ -173,7 +181,7 @@ window.addEventListener("load", () => {
       taskBox.innerHTML = li2;
     } else {
       taskBox.innerHTML = `<span class="no_task_span">You don't have any Completed Task</span>`;
-      //   showNotification("No Task were added.", "error");
+      //   showNotification("No Task were added.", "warning");
     }
   });
 });
@@ -218,7 +226,7 @@ function checkbox_function(check_task) {
       if (result) {
         completedTodos.splice(completedTodos.indexOf(update_check_task), 1);
         localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
-        showNotification("Task moved to Progress.", "orange");
+        showNotification("Task moved to Progress.", "process");
         if (document.querySelector(".active").id == "Completed") {
           completed.click();
         } else {
@@ -313,7 +321,7 @@ function delete_function(delete_task) {
         completedTodos.splice(completedTodos.indexOf(update_delete_task), 1);
         localStorage.setItem("todos", JSON.stringify(todos));
         localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
-        showNotification("Task deleted.", "error");
+        showNotification("Task deleted.", "warning");
         if (document.querySelector(".active").id == "Completed") {
           completed.click();
         } else {
@@ -331,7 +339,7 @@ function delete_function(delete_task) {
       if (result) {
         todos.splice(todos.indexOf(update_delete_task), 1);
         localStorage.setItem("todos", JSON.stringify(todos));
-        showNotification("Task deleted.", "error");
+        showNotification("Task deleted.", "warning");
         if (document.querySelector(".active").id == "Progress") {
           progress.click();
         } else {

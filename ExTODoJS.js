@@ -281,11 +281,11 @@ function edit_function(edit_task) {
     localStorage.setItem("todos", JSON.stringify(todos));
     localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
 
-    if(update_edit_task.value!=""){
-    todos.push(update_edit_task.value);
-    completedTodos.push(update_edit_task.value);
-    localStorage.setItem("todos", JSON.stringify(todos));
-    localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
+    if (update_edit_task.value != "") {
+      todos.push(update_edit_task.value);
+      completedTodos.push(update_edit_task.value);
+      localStorage.setItem("todos", JSON.stringify(todos));
+      localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
     }
 
     if (document.querySelector(".active").id == "Completed") {
@@ -304,9 +304,9 @@ function edit_function(edit_task) {
     todos.splice(indexToChangeT, 1);
     localStorage.setItem("todos", JSON.stringify(todos));
 
-    if(update_edit_task.value!=""){
-    todos.push(update_edit_task.value);
-    localStorage.setItem("todos", JSON.stringify(todos));
+    if (update_edit_task.value != "") {
+      todos.push(update_edit_task.value);
+      localStorage.setItem("todos", JSON.stringify(todos));
     }
 
     if (document.querySelector(".active").id == "Progress") {
@@ -323,7 +323,7 @@ function delete_function(delete_task) {
     delete_task.parentElement.previousElementSibling.querySelector(
       ".text"
     ).value;
-    let shortened=update_delete_task;
+  let shortened = update_delete_task;
 
   if (
     document.querySelector(".active").id == "Completed" ||
@@ -331,7 +331,8 @@ function delete_function(delete_task) {
       .style.backgroundColor == "green" &&
       document.querySelector(".active").id == "All")
   ) {
-    shortened=(shortened.length>10)? shortened.slice(0,20)+'...':shortened;
+    shortened =
+      shortened.length > 10 ? shortened.slice(0, 20) + "..." : shortened;
     confirm_message = `Want to delete the TASK?\n\n${shortened}`;
     confirmFunction(confirm_message, function (result) {
       if (result) {
@@ -353,8 +354,9 @@ function delete_function(delete_task) {
       .style.backgroundColor == "orange" &&
       document.querySelector(".active").id == "All")
   ) {
-    shortened=(shortened.length>10)? shortened.slice(0,20)+'...':shortened;
-    confirm_message=`Want to delete the TASK?\n\n${shortened}`;
+    shortened =
+      shortened.length > 10 ? shortened.slice(0, 20) + "..." : shortened;
+    confirm_message = `Want to delete the TASK?\n\n${shortened}`;
     confirmFunction(confirm_message, function (result) {
       if (result) {
         todos.splice(todos.indexOf(update_delete_task), 1);

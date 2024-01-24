@@ -6,6 +6,7 @@ let progress_displayedTodos = [];
 let completed_displayedTodos = [];
 let input;
 let li2 = "";
+let confirm_message;
 
 function showNotification(message, type) {
   let popUp = document.createElement("div");
@@ -31,7 +32,7 @@ function confirmFunction(message, callback) {
 
   let messageBox = document.createElement("div");
   messageBox.classList.add("message-box");
-  messageBox.textContent = message;
+  messageBox.innerText = message;
   confirmBox.appendChild(messageBox);
 
   let buttonBox = document.createElement("div");
@@ -91,7 +92,7 @@ window.addEventListener("load", () => {
     input = document.querySelector("#title");
     let task = input.value.trim();
 
-    // for not accepting existing task which is in any format such as uppercase/lowercase
+    // for not accepting existing task which is in different format like uppercase/lowercase
 
     // let flag=true;
     // for(let i=0;i<todos.length;i++){
@@ -115,12 +116,15 @@ window.addEventListener("load", () => {
       }
 
       input.value = "";
+      input.focus();
       showNotification("Task added successfully.", "success");
     } else if (task == "") {
       input.value = "";
+      input.focus();
       showNotification("Empty Task not accepted.", "warning");
     } else {
       input.value = "";
+      input.focus();
       showNotification("Task already added.", "warning");
     }
   });
@@ -274,10 +278,16 @@ function edit_function(edit_task) {
     const indexToChangeC = completedTodos.indexOf(taskBefore);
     todos.splice(indexToChangeT, 1);
     completedTodos.splice(indexToChangeC, 1);
+    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
+
+    if(update_edit_task.value!=""){
     todos.push(update_edit_task.value);
     completedTodos.push(update_edit_task.value);
     localStorage.setItem("todos", JSON.stringify(todos));
     localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
+    }
+
     if (document.querySelector(".active").id == "Completed") {
       completed.click();
     } else {
@@ -292,8 +302,13 @@ function edit_function(edit_task) {
   ) {
     const indexToChangeT = todos.indexOf(taskBefore);
     todos.splice(indexToChangeT, 1);
+    localStorage.setItem("todos", JSON.stringify(todos));
+
+    if(update_edit_task.value!=""){
     todos.push(update_edit_task.value);
     localStorage.setItem("todos", JSON.stringify(todos));
+    }
+
     if (document.querySelector(".active").id == "Progress") {
       progress.click();
     } else {
@@ -308,6 +323,7 @@ function delete_function(delete_task) {
     delete_task.parentElement.previousElementSibling.querySelector(
       ".text"
     ).value;
+    let shortened=update_delete_task;
 
   if (
     document.querySelector(".active").id == "Completed" ||
@@ -315,7 +331,9 @@ function delete_function(delete_task) {
       .style.backgroundColor == "green" &&
       document.querySelector(".active").id == "All")
   ) {
-    confirmFunction("Want to delete the TASK?", function (result) {
+    shortened=(shortened.length>10)? shortened.slice(0,20)+'...':shortened;
+    confirm_message = `Want to delete the TASK?\n\n${shortened}`;
+    confirmFunction(confirm_message, function (result) {
       if (result) {
         todos.splice(todos.indexOf(update_delete_task), 1);
         completedTodos.splice(completedTodos.indexOf(update_delete_task), 1);
@@ -335,7 +353,9 @@ function delete_function(delete_task) {
       .style.backgroundColor == "orange" &&
       document.querySelector(".active").id == "All")
   ) {
-    confirmFunction("Want to delete the TASK?", function (result) {
+    shortened=(shortened.length>10)? shortened.slice(0,20)+'...':shortened;
+    confirm_message=`Want to delete the TASK?\n\n${shortened}`;
+    confirmFunction(confirm_message, function (result) {
       if (result) {
         todos.splice(todos.indexOf(update_delete_task), 1);
         localStorage.setItem("todos", JSON.stringify(todos));

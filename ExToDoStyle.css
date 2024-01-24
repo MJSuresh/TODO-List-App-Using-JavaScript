@@ -29,7 +29,6 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: purple; */
     background-color: black;
     color: white;
     height: 5%;
@@ -67,21 +66,22 @@ main {
     /* line-height: 50px; */
 }
 
-.left-one{
+.left-one {
     height: 40%;
     width: 50%;
     /* align-items: center; */
     position: relative;
-    top: 0; /* Positions the element at the top of the page */
-  left: 50%; /* Positions the element horizontally centered */
-  transform: translate(-50%,40%);
-/* padding-top: 10px; */
+    top: 0;
+    /* Positions the element at the top of the page */
+    left: 50%;
+    /* Positions the element horizontally centered */
+    transform: translate(-50%, 25%);
+    /* padding-top: 10px; */
 }
 
 .forms {
     height: 30%;
     width: 100%;
-    
     display: flex;
     justify-content: space-between;
 }
@@ -90,7 +90,6 @@ form input {
     padding: 18px;
     border: 1px solid rgba(255, 255, 255, 0.171);
     border-radius: 8px;
- 
     flex: 1 1 0%;
     background-color: rgba(255, 255, 255, 0.8);
 }
@@ -101,7 +100,6 @@ form input {
     border: 1px solid rgba(255, 255, 255, 0.171);
     border-radius: 8px;
     font-weight: bold;
-
     cursor: pointer;
     text-align: center;
     margin-left: 5px;
@@ -124,30 +122,45 @@ form input {
     /* background-color: rgba(0, 0, 0, 0.5); */
     transition: background-color 0.3s ease-in-out;
     /* last edited */
-    margin-top: 10%;
-    padding: 10px;
+    /* margin-top: 10%;  */
+    padding: 1.5%;
 }
 
 .navbar {
+    align-items: center;
+    /* height: 33%; */
+    width: 50%;
+    /* align-items: center; */
+    position: relative;
+    top: 0;
+    /* Positions the element at the top of the page */
+    left: 50%;
+    /* Positions the element horizontally centered */
+    transform: translate(-50%, 30%);
+    /* padding-top: 10px; */
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    width: 50%;
-    padding-left: 25%;
-    height: 30%;
+    /* background-color: rgba(14, 7, 7); */
+    background-color: rgb(32, 32, 32);
+
+    border-radius: 10px;
 }
 
 .navbar a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgb(51, 50, 50);
     color: #ffae00;
-    border-radius: 40%;
+    border-radius: 40px;
 }
 
 .navbar a.active {
     /* background-color: rgba(255, 255, 255, 0.15); Slightly darker background for active link */
     color: #12f8b3;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     transition: color 0.2s ease-in-out;
+    /* background-color: rgb(41, 39, 39); */
+    background-color: rgba(14, 7, 7);
+
+    border-radius: 15px;
 }
 
 .right {
@@ -293,27 +306,42 @@ li.task {
 @media screen and (min-width: 281px) {
     @media screen and (max-width: 600px) {
 
-        main {
+        body {
             background-image: url(ToDo_BG_Mobiles.jpg);
         }
 
-        .left .forms {
-            width: 90%;
-            padding-left: 5%;
+        .left-one {
+            height: 40%;
+            width: 96%;
+            /* align-items: center; */
+            position: relative;
+            top: 0;
+            /* Positions the element at the top of the page */
+            left: 50%;
+            /* Positions the element horizontally centered */
+            transform: translate(-50%, 35%);
+            /* padding-top: 10px; */
         }
 
         .navbar a {
             font-size: 18px;
-            height: 50%;
-            margin-top: 15%;
-            padding: 10px;
+            /* height: 50%; */
+            padding: 12px;
+            align-items: center;
         }
 
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            width: 90%;
-            padding-left: 5%;
+            width: 96%;
+            align-items: center;
+            height: 45px;
+            /* align-items: center; */
+            position: relative;
+            top: 0;
+            /* Positions the element at the top of the page */
+            left: 50%;
+            /* Positions the element horizontally centered */
+            transform: translate(-50%, 40%);
+            /* padding-top: 10px; */
         }
 
         .right {
@@ -333,40 +361,61 @@ li.task {
 }
 
 @media screen and (max-width: 280px) {
+
     main {
         background-image: url(ToDo_BG_Mobiles.jpg);
+        margin: 0 auto;
+        padding: 0;
     }
 
-    .left .forms {
-        width: 90%;
-        padding-left: 1.5%;
-    }
-
-    form input {
-        padding: 18px 15px;
+    .left-one {
+        height: 40%;
+        width: 96%;
+        /* align-items: center; */
+        position: relative;
+        top: 0;
+        /* Positions the element at the top of the page */
+        left: 50%;
+        /* Positions the element horizontally centered */
+        transform: translate(-50%, 35%);
+        /* padding-top: 10px; */
     }
 
     .forms button {
-        padding: 18px 15px;
+        padding: 19px 14px 17px 14px;
+    }
+
+    html,
+    body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
 
     .navbar a {
         font-size: 18px;
-        height: 50%;
-        margin-top: 25%;
-        padding: 10px;
+        /* height: 50%; */
+        padding: 9px;
+        align-items: center;
     }
 
     .navbar {
-        display: flex;
-        justify-content: space-between;
-        width: 90%;
-        padding-left: 5%;
+        width: 100%;
+        align-items: center;
+        height: 33%;
+        /* align-items: center; */
+        position: relative;
+        top: 0;
+        /* Positions the element at the top of the page */
+        left: 50%;
+        /* Positions the element horizontally centered */
+        transform: translate(-50%, 50%);
+        /* padding-top: 10px; */
     }
 
     .right {
-        margin-left: 2.5%;
-        width: 95%;
+        margin-left: 0%;
+        width: 100%;
     }
 
     #tasks .task {
@@ -394,24 +443,43 @@ li.task {
             background-image: url(ToDo_BG_Mobiles.jpg);
         }
 
-        .forms {
-            width: 80%;
-            padding-left: 10%;
+        .left-one {
             height: 40%;
+            width: 80%;
+            /* align-items: center; */
+            position: relative;
+            top: 0;
+            /* Positions the element at the top of the page */
+            left: 50%;
+            /* Positions the element horizontally centered */
+            transform: translate(-50%, 35%);
+            /* padding-top: 10px; */
+        }
+
+        .forms input,
+        .forms button {
+            padding: 23px;
         }
 
         .navbar a {
-            margin-top: 30px;
             font-size: 18px;
-            height: 50%;
-            padding: 10px;
+            /* height: 50%; */
+            padding: 16px;
+            align-items: center;
         }
 
         .navbar {
-            display: flex;
-            justify-content: space-between;
             width: 80%;
-            padding-left: 10%;
+            align-items: center;
+            height: 55px;
+            /* align-items: center; */
+            position: relative;
+            top: 0;
+            /* Positions the element at the top of the page */
+            left: 50%;
+            /* Positions the element horizontally centered */
+            transform: translate(-50%, 50%);
+            /* padding-top: 10px; */
         }
 
         .right {
@@ -428,7 +496,6 @@ li.task {
         #tasks .task .content input {
             padding-top: 4px;
         }
-
     }
 }
 

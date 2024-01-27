@@ -8,7 +8,7 @@ body {
 }
 
 body {
-    background-color: rgb(47, 103, 187);
+    background-color: rgb(43, 42, 42);
 }
 
 .material-symbols-outlined {
@@ -69,7 +69,7 @@ main {
     height: 50%;
 }
 
-.left-two{
+.left-two {
     height: 50%;
 }
 
@@ -98,14 +98,14 @@ main {
     display: block;
     transition: 0.4s;
     margin-left: 10px;
-   margin-right: 10px;
+    margin-right: 10px;
 }
 
-.forms input #title{
+.forms input #title {
     width: 50%;
 }
 
-.fa-square-plus{
+.fa-square-plus {
     color: black;
     /* width: 7%; */
     /* height: 35px; */
@@ -114,7 +114,7 @@ main {
     cursor: pointer;
 }
 
-.fa-square-plus:hover{
+.fa-square-plus:hover {
     color: rgb(58, 55, 55);
 }
 
@@ -314,6 +314,64 @@ li.task {
     text-shadow: 2px 0px 1px black;
 }
 
+@media screen and (max-width: 360px) {
+
+    body {
+        background-image: url(ToDo_BG_Mobiles.jpg);
+    }
+
+    .left {
+        height: 20%;
+    }
+
+    .forms {
+        width: 95%;
+        transform: translate(2.5%, 30%);
+        height: 40px;
+    }
+
+    .forms input {
+        font-size: 0.9rem;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .fa-square-plus {
+        font-size: 40px;
+    }
+
+    .navbar a {
+        font-size: 18px;
+        padding: 12px;
+        align-items: center;
+    }
+
+    .navbar {
+        width: 96%;
+        align-items: center;
+        height: 45px;
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 10%);
+    }
+
+    .right {
+        margin-left: 2.5%;
+        width: 95%;
+        height: 80%;
+    }
+
+    #tasks .task {
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+
+    #tasks .task .content input {
+        padding-top: 4px;
+    }
+}
+
 @media screen and (min-width: 361px) {
     @media screen and (max-width: 600px) {
 
@@ -321,37 +379,28 @@ li.task {
             background-image: url(ToDo_BG_Mobiles.jpg);
         }
 
-        /* .left-one {
-            width: 96%;
-            position: relative;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, 35%);
-        } */
-
-        .left{
+        .left {
             height: 20%;
         }
 
         .forms {
             width: 95%;
-            transform: translate(2.5%, 55%);
+            transform: translate(2.5%, 35%);
             height: 45px;
         }
-        
+
         .forms input {
             font-size: 0.9rem;
             margin-left: 10px;
-           margin-right: 10px;
+            margin-right: 10px;
         }
 
-        .fa-square-plus{
+        .fa-square-plus {
             font-size: 46px;
         }
 
         .navbar a {
             font-size: 18px;
-            /* height: 50%; */
             padding: 12px;
             align-items: center;
         }
@@ -360,14 +409,10 @@ li.task {
             width: 96%;
             align-items: center;
             height: 45px;
-            /* align-items: center; */
             position: relative;
             top: 0;
-            /* Positions the element at the top of the page */
             left: 50%;
-            /* Positions the element horizontally centered */
-            transform: translate(-50%, 30%);
-            /* padding-top: 10px; */
+            transform: translate(-50%, 17%);
         }
 
         .right {
@@ -384,77 +429,6 @@ li.task {
         #tasks .task .content input {
             padding-top: 4px;
         }
-    }
-}
-
-@media screen and (max-width: 375px) {
-
-    body {
-        background-image: url(ToDo_BG_Mobiles.jpg);
-    }
-
-    /* .left-one {
-        width: 96%;
-        position: relative;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 35%);
-    } */
-
-    .left{
-        height: 20%;
-    }
-
-    .forms {
-        width: 95%;
-        transform: translate(2.5%, 30%);
-        height: 40px;
-    }
-    
-    .forms input {
-        font-size: 0.9rem;
-        margin-left: 10px;
-       margin-right: 10px;
-    }
-
-    .fa-square-plus{
-        font-size: 40px;
-    }
-
-    .navbar a {
-        font-size: 18px;
-        /* height: 50%; */
-        padding: 12px;
-        align-items: center;
-    }
-
-    .navbar {
-        width: 96%;
-        align-items: center;
-        height: 45px;
-        /* align-items: center; */
-        position: relative;
-        top: 0;
-        /* Positions the element at the top of the page */
-        left: 50%;
-        /* Positions the element horizontally centered */
-        transform: translate(-50%, 10%);
-        /* padding-top: 10px; */
-    }
-
-    .right {
-        margin-left: 2.5%;
-        width: 95%;
-        height: 80%;
-    }
-
-    #tasks .task {
-        padding: 10px;
-        margin-bottom: 5px;
-    }
-
-    #tasks .task .content input {
-        padding-top: 4px;
     }
 }
 
@@ -532,16 +506,7 @@ li.task {
             background-image: url(ToDo_BG_Mobiles.jpg);
         }
 
-        /* .left-one {
-            height: 40%;
-            width: 80%;
-            position: relative;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, 35%);
-        } */
-
-        .left{
+        .left {
             height: 20%;
         }
 
@@ -550,25 +515,19 @@ li.task {
             transform: translate(13%, 55%);
             height: 50px;
         }
-        
+
         .forms input {
             font-size: 0.9rem;
             margin-left: 10px;
-           margin-right: 10px;
+            margin-right: 10px;
         }
 
-        .fa-square-plus{
+        .fa-square-plus {
             font-size: 49.99px;
         }
 
-        /* .forms input,
-        .forms button {
-            padding: 23px;
-        } */
-
         .navbar a {
             font-size: 18px;
-            /* height: 50%; */
             padding: 16px;
             align-items: center;
         }
@@ -577,14 +536,10 @@ li.task {
             width: 80%;
             align-items: center;
             height: 55px;
-            /* align-items: center; */
             position: relative;
             top: 0;
-            /* Positions the element at the top of the page */
             left: 50%;
-            /* Positions the element horizontally centered */
             transform: translate(-50%, 20%);
-            /* padding-top: 10px; */
         }
 
         .right {
@@ -592,6 +547,67 @@ li.task {
             width: 80%;
             margin-left: 10%;
             height: 80%;
+        }
+
+        #tasks .task {
+            padding: 15px;
+            margin-bottom: 5px;
+        }
+
+        #tasks .task .content input {
+            padding-top: 4px;
+        }
+    }
+}
+
+@media screen and (min-height: 1366px) {
+    @media screen and (max-height: 1368px) {
+
+        main {
+            background-image: url(ToDo_BG_Mobiles.jpg);
+        }
+
+        .left {
+            height: 15%;
+        }
+
+        .forms {
+            width: 80%;
+            transform: translate(13%, 55%);
+            height: 50px;
+        }
+
+        .forms input {
+            font-size: 0.9rem;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .fa-square-plus {
+            font-size: 49.99px;
+        }
+
+        .navbar a {
+            font-size: 18px;
+            padding: 16px;
+            align-items: center;
+        }
+
+        .navbar {
+            width: 80%;
+            align-items: center;
+            height: 55px;
+            position: relative;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 20%);
+        }
+
+        .right {
+            margin-left: 10%;
+            width: 80%;
+            margin-left: 10%;
+            height: 85%;
         }
 
         #tasks .task {

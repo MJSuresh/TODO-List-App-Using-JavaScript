@@ -89,13 +89,14 @@ window.addEventListener("load", () => {
 
   form.addEventListener("keyup", (e) => {
     // e.preventDefault();
-
-    if (e.key == "Enter") {
+    
+    if(e.key=="Enter"){
       submitTask();
     }
+    
   });
 
-  document.getElementById("add-icon").addEventListener("click", submitTask);
+  document.getElementById("add-icon").addEventListener("click",submitTask);
 
   all.addEventListener("click", () => {
     if (todos.length > 0) {
@@ -158,45 +159,47 @@ window.addEventListener("load", () => {
   });
 });
 
-function submitTask() {
+
+
+function submitTask(){
   input = document.querySelector("#title");
-  let task = input.value.trim();
+    let task = input.value.trim();
 
-  // for not accepting existing task which is in different format like uppercase/lowercase
+    // for not accepting existing task which is in different format like uppercase/lowercase
 
-  // let flag=true;
-  // for(let i=0;i<todos.length;i++){
-  //     if(todos[i].toLowerCase()==task.toLowerCase()){
-  //       flag=false;
-  //     }
-  // }
+    // let flag=true;
+    // for(let i=0;i<todos.length;i++){
+    //     if(todos[i].toLowerCase()==task.toLowerCase()){
+    //       flag=false;
+    //     }
+    // }
 
-  // if (!todos.includes(task) && task!="" && flag) {
+    // if (!todos.includes(task) && task!="" && flag) {
 
-  if (!todos.includes(task) && task != "") {
-    todos.push(task);
-    localStorage.setItem("todos", JSON.stringify(todos)); // adding the task into local storage
+    if (!todos.includes(task) && task != "") {
+      todos.push(task);
+      localStorage.setItem("todos", JSON.stringify(todos)); // adding the task into local storage
 
-    if (document.querySelector(".active").id == "All") {
-      all.click();
-    } else if (document.querySelector(".active").id == "Progress") {
-      progress.click();
+      if (document.querySelector(".active").id == "All") {
+        all.click();
+      } else if (document.querySelector(".active").id == "Progress") {
+        progress.click();
+      } else {
+        completed.click();
+      }
+
+      input.value = "";
+      input.focus();
+      showNotification("Task added successfully.", "success");
+    } else if (task == "") {
+      input.value = "";
+      input.focus();
+      showNotification("Empty Task not accepted.", "warning");
     } else {
-      completed.click();
+      input.value = "";
+      input.focus();
+      showNotification("Task already added.", "warning");
     }
-
-    input.value = "";
-    input.focus();
-    showNotification("Task added successfully.", "success");
-  } else if (task == "") {
-    input.value = "";
-    input.focus();
-    showNotification("Empty Task not accepted.", "warning");
-  } else {
-    input.value = "";
-    input.focus();
-    showNotification("Task already added.", "warning");
-  }
 }
 
 function display(task) {
@@ -341,7 +344,7 @@ function delete_function(delete_task) {
       document.querySelector(".active").id == "All")
   ) {
     shortened =
-      shortened.length > 20 ? shortened.slice(0, 20) + "..." : shortened; //checking the tasks that exists more than 20 characters or not
+      shortened.length > 10 ? shortened.slice(0, 20) + "..." : shortened; //checking the tasks that exists more than 20 characters or not
     confirm_message = `Want to delete the TASK?\n\n${shortened}`;
     confirmFunction(confirm_message, function (result) {
       if (result) {
@@ -364,7 +367,7 @@ function delete_function(delete_task) {
       document.querySelector(".active").id == "All")
   ) {
     shortened =
-      shortened.length > 20 ? shortened.slice(0, 20) + "..." : shortened;
+      shortened.length > 10 ? shortened.slice(0, 20) + "..." : shortened;
     confirm_message = `Want to delete the TASK?\n\n${shortened}`;
     confirmFunction(confirm_message, function (result) {
       if (result) {

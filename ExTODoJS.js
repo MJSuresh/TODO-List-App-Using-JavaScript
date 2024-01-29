@@ -1,12 +1,8 @@
-let taskBefore;
 let all, progress, completed;
-let todos = [];
-let completedTodos = [];
-let progress_displayedTodos = [];
-let completed_displayedTodos = [];
-let input;
+let todos = [],
+  completedTodos = [];
+let input, taskBefore, confirm_message;
 let li2 = "";
-let confirm_message;
 
 function showNotification(message, type) {
   let popUp = document.createElement("div");
@@ -117,15 +113,10 @@ window.addEventListener("load", () => {
       li2 = "";
       for (let i = 0; i < todos.length; i++) {
         const display_completedTodos = todos[i];
-        if (
-          !completedTodos.includes(display_completedTodos) &&
-          !progress_displayedTodos.includes(display_completedTodos)
-        ) {
+        if (!completedTodos.includes(display_completedTodos)) {
           display(display_completedTodos);
-          progress_displayedTodos.push(display_completedTodos);
         }
       }
-      progress_displayedTodos = [];
       taskBox.innerHTML =
         li2 ||
         `<span class="no_task_span">You don't have any Pending Task</span>`;
@@ -139,15 +130,10 @@ window.addEventListener("load", () => {
       li2 = "";
       for (let i = 0; i < completedTodos.length; i++) {
         const display_completedTodos = completedTodos[i];
-        if (
-          completedTodos.includes(display_completedTodos) &&
-          !completed_displayedTodos.includes(display_completedTodos)
-        ) {
+        if (completedTodos.includes(display_completedTodos)) {
           display(display_completedTodos);
-          completed_displayedTodos.push(display_completedTodos);
         }
       }
-      completed_displayedTodos = [];
       taskBox.innerHTML = li2;
     } else {
       taskBox.innerHTML = `<span class="no_task_span">You don't have any Completed Task</span>`;

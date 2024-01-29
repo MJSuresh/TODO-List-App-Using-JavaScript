@@ -6,7 +6,7 @@ let progress_displayedTodos = [];
 let completed_displayedTodos = [];
 let input;
 let li2 = "";
-let confirm_message;
+let confirm_message; //n
 
 function showNotification(message, type) {
   let popUp = document.createElement("div");

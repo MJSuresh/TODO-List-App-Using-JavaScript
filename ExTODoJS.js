@@ -61,6 +61,7 @@ function confirmFunction(message, callback) {
     callback(true);
     removeConfirmationBox();
   }
+  
   noBox.addEventListener("click", noButtonClick);
 
   function noButtonClick() {

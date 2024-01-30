@@ -550,6 +550,7 @@ li.task {
     text-align: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 16px;
+    font-weight: bold;
     line-height: 1.5;
     padding: 20px;
     border-radius: 5px;

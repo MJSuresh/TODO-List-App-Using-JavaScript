@@ -1,1 +1,1 @@
-Here U can find the Web Session Tasks and Practiced Codes.
+Here you can find the Web Session Task's Code.

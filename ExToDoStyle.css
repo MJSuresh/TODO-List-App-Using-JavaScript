@@ -128,7 +128,7 @@ main {
 
 .navbar a {
     text-decoration: none;
-    color: #ebdb00;
+    color: yellow;
     font-weight: bold;
     font-size: 20px;
     letter-spacing: 1.3px;
@@ -279,6 +279,7 @@ li.task {
 
 #notification-popup.process {
     background-color: rgb(255, 136, 0);
+    color: black;
 }
 
 .no_task_span {

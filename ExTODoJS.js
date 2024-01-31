@@ -3,6 +3,7 @@ let todos = [],
   completedTodos = [];
 let input, taskBefore, confirm_message;
 let li2 = "";
+let edit_and_save;
 
 function showNotification(message, type) {
   let popUp = document.createElement("div");
@@ -72,6 +73,8 @@ window.addEventListener("load", () => {
   progress = document.querySelector("#Progress");
   completed = document.querySelector("#Completed");
   let taskBox = document.querySelector("#tasks");
+  // edit_and_save = document.querySelector(".edit");
+  // console.log(edit_and_save.innerHTML);
 
   todos = JSON.parse(localStorage.getItem("todos")) || [];
   completedTodos = JSON.parse(localStorage.getItem("completedTodos")) || [];
@@ -253,9 +256,12 @@ function checkbox_function(check_task) {
 function edit_function(edit_task) {
   let update_edit_task =
     edit_task.parentElement.previousElementSibling.querySelector(".text");
+    edit_and_save=edit_task.parentElement.querySelector(".edit");
+    console.log(edit_and_save);
 
   if (edit_task.innerText == "Edit") {
     taskBefore = update_edit_task.value;
+    // edit_and_save.innerText="Edit"
     edit_task.innerText = "Save";
     update_edit_task.removeAttribute("readonly");
     update_edit_task.setSelectionRange(taskBefore.length, taskBefore.length);

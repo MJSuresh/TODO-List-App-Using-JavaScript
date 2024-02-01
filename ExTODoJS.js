@@ -73,6 +73,8 @@ window.addEventListener("load", () => {
   progress = document.querySelector("#Progress");
   completed = document.querySelector("#Completed");
   let taskBox = document.querySelector("#tasks");
+  input = document.querySelector("#title");
+  edit_and_save="null";
   // edit_and_save = document.querySelector(".edit");
   // console.log(edit_and_save.innerHTML);
 
@@ -90,12 +92,14 @@ window.addEventListener("load", () => {
   form.addEventListener("keyup", (e) => {
     // e.preventDefault();
     if (e.key == "Enter") {
-      submitTask();
+      submitTask(input.value, edit_and_save);
     }
   });
 
-  document.getElementById("add-icon").addEventListener("click", submitTask);
-
+  document.getElementById("add-icon").addEventListener("click", () => {
+    submitTask(input.value, edit_and_save);
+  });
+  
   all.addEventListener("click", () => {
     if (todos.length > 0) {
       li2 = "";
@@ -144,36 +148,37 @@ window.addEventListener("load", () => {
   });
 });
 
-function submitTask() {
-  input = document.querySelector("#title");
-  let task = input.value.trim();
+function submitTask(task, edit_and_save2) {
+  task=task.trim();
+  task=task.replace(/[^a-zA-Z0-9 ]/g,"");
+  task=task.replace(/\s+/g, " ");
+  
+  if(todos.includes(edit_and_save2)){
+    todos.splice(todos.indexOf(edit_and_save2),1);
+    localStorage.setItem("todos", JSON.stringify(todos));
 
-  // for not accepting existing task which is in different format like uppercase/lowercase
+    // if(completedTodos.includes(edit_and_save2)){
+    //   completedTodos.splice(completedTodos.indexOf(edit_and_save2),1);
+    //   completedTodos.push(task2);
+    //   localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
+    // }
+    edit_and_save="null";
+    edit_and_save2="null";
+  }
 
-  // let flag=true;
-  // for(let i=0;i<todos.length;i++){
-  //     if(todos[i].toLowerCase()==task.toLowerCase()){
-  //       flag=false;
-  //     }
-  // }
-
-  // if (!todos.includes(task) && task!="" && flag) {
-
-  if (!todos.includes(task) && task != "") {
+  if (!todos.includes(task) && task != "" && edit_and_save2=="null") {
     todos.push(task);
     localStorage.setItem("todos", JSON.stringify(todos)); // adding the task into local storage
 
-    if (document.querySelector(".active").id == "All") {
-      all.click();
-    } else if (document.querySelector(".active").id == "Progress") {
+    if (document.querySelector(".active").id == "Progress") {
       progress.click();
     } else {
-      completed.click();
+      all.click();
     }
 
     input.value = "";
     input.focus();
-    showNotification("Task added successfully.", "success");
+    showNotification("Task updated successfully.", "success");
   } else if (task == "") {
     input.value = "";
     input.focus();
@@ -189,24 +194,24 @@ function display(task) {
   if (!completedTodos.includes(task)) {
     let li = `<li class="task">
                         <div class="content">
-                        <span type="checkbox" onclick="checkbox_function(this)" id="myCheckbox" class="material-symbols-outlined" style="background-color: orange;border-radius: 100%;">check_circle</span>
-                        <input type="text" name="text" class="text" value="${task}" readonly>
+                          <span type="checkbox" onclick="checkbox_function(this)" id="myCheckbox" class="material-symbols-outlined" style="background-color: orange;border-radius: 100%;">check_circle</span>
+                          <span type="text" name="text" class="text" readonly>${task}</span>
                         </div>
                         <div class="actions">
-                            <button class="edit" onclick="edit_function(this)">Edit</button>
-                            <button class="delete" onclick="delete_function(this)">Delete</button>
+                          <button class="edit" onclick="edit_function(this)">Edit</button>
+                          <button class="delete" onclick="delete_function(this)">Delete</button>
                         </div>
         </li>`;
     li2 = li + li2;
   } else {
     let li = `<li class="task">
                         <div class="content">
-                        <span type="checkbox" onclick="checkbox_function(this)" id="myCheckbox" class="material-symbols-outlined" style="background-color: green;border-radius: 100%;">check_circle</span>
-                        <input type="text" name="text" class="text" value="${task}" readonly>
+                          <span type="checkbox" onclick="checkbox_function(this)" id="myCheckbox" class="material-symbols-outlined" style="background-color: green;border-radius: 100%;">check_circle</span>
+                          <input type="text" name="text" class="text" value="${task}" readonly>
                         </div>
                         <div class="actions">
-                            <button class="edit" onclick="edit_function(this)">Edit</button>
-                            <button class="delete" onclick="delete_function(this)">Delete</button>
+                          <button class="edit" onclick="edit_function(this)">Edit</button>
+                          <button class="delete" onclick="delete_function(this)">Delete</button>
                         </div>
         </li>`;
     li2 = li + li2;
@@ -255,66 +260,17 @@ function checkbox_function(check_task) {
 
 function edit_function(edit_task) {
   let update_edit_task =
-    edit_task.parentElement.previousElementSibling.querySelector(".text");
-    edit_and_save=edit_task.parentElement.querySelector(".edit");
-    console.log(edit_and_save);
+    edit_task.parentElement.previousElementSibling.querySelector(".text").value;
 
-  if (edit_task.innerText == "Edit") {
-    taskBefore = update_edit_task.value;
-    // edit_and_save.innerText="Edit"
-    edit_task.innerText = "Save";
-    update_edit_task.removeAttribute("readonly");
-    update_edit_task.setSelectionRange(taskBefore.length, taskBefore.length);
-    update_edit_task.focus();
-  } else if (
-    document.querySelector(".active").id == "Completed" ||
-    (edit_task.parentElement.previousElementSibling.querySelector("span").style
-      .backgroundColor == "green" &&
-      document.querySelector(".active").id == "All")
-  ) {
-    const indexToChangeT = todos.indexOf(taskBefore);
-    const indexToChangeC = completedTodos.indexOf(taskBefore);
-    todos.splice(indexToChangeT, 1);
-    completedTodos.splice(indexToChangeC, 1);
-    localStorage.setItem("todos", JSON.stringify(todos));
-    localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
-
-    if (update_edit_task.value != "") {
-      todos.push(update_edit_task.value);
-      completedTodos.push(update_edit_task.value);
-      localStorage.setItem("todos", JSON.stringify(todos));
-      localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
+    if(!completedTodos.includes(update_edit_task)){
+      input.value = update_edit_task;
+      input.focus();
+      edit_and_save=update_edit_task;
+    }else{
+      showNotification("Can't edit completed task.", "warning");
     }
-
-    if (document.querySelector(".active").id == "Completed") {
-      completed.click();
-    } else {
-      all.click();
-    }
-    showNotification("Task updated.", "success");
-  } else if (
-    document.querySelector(".active").id == "Progress" ||
-    (edit_task.parentElement.previousElementSibling.querySelector("span").style
-      .backgroundColor == "orange" &&
-      document.querySelector(".active").id == "All")
-  ) {
-    const indexToChangeT = todos.indexOf(taskBefore);
-    todos.splice(indexToChangeT, 1);
-    localStorage.setItem("todos", JSON.stringify(todos));
-
-    if (update_edit_task.value != "") {
-      todos.push(update_edit_task.value);
-      localStorage.setItem("todos", JSON.stringify(todos));
-    }
-
-    if (document.querySelector(".active").id == "Progress") {
-      progress.click();
-    } else {
-      all.click();
-    }
-    showNotification("Task updated.", "success");
+    
   }
-}
 
 function delete_function(delete_task) {
   const update_delete_task =

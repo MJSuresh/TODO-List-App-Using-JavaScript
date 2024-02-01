@@ -161,6 +161,7 @@ main {
     scrollbar-width: 0.5px;
     margin: 0;
     padding: 0;
+    width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -183,11 +184,13 @@ main {
     padding: 0.6rem;
     border-radius: 9px;
     margin-bottom: 5px;
+    width: 95%;
+    overflow: hidden;
 }
 
 /* Target the task list item when hovering */
 li.task:hover {
-    border: 3px solid #0ffa5d;
+    border: 2px solid #0ffa5d;
     border-radius: 5px;
 }
 
@@ -204,9 +207,10 @@ li.task {
 }
 
 .task .content {
-    flex: 1 1 0%;
+    /* flex: 1 1 0%; */
     display: flex;
     margin: 0 0;
+    width: 75%;
 }
 
 .task .content .text {
@@ -215,11 +219,13 @@ li.task {
     width: 98%;
     display: block;
     transition: 0.4s;
+    word-wrap: break-word;
 }
 
 .task .actions {
     display: flex;
     margin: 0 -0.5rem;
+    width: 25%;
 }
 
 .task .actions button {

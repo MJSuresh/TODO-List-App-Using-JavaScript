@@ -78,8 +78,25 @@ window.addEventListener("load", () => {
   // edit_and_save = document.querySelector(".edit");
   // console.log(edit_and_save.innerHTML);
 
+
+
   todos = JSON.parse(localStorage.getItem("todos")) || [];
   completedTodos = JSON.parse(localStorage.getItem("completedTodos")) || [];
+
+  // const all_count=todos.length;
+  // const progress_count=all_count-completedTodos.length;
+  // const completed_count=completedTodos.length;
+
+  // function counts(){
+  //   let acount=document.querySelector("#All");
+  //   acount.innerText=`All(${all_count})`;
+  //   let pcount=document.querySelector("#Progress");
+  //   pcount.innerText=`Progress(${progress_count})`;
+  //   let ccount=document.querySelector("#Completed");
+  //   ccount.innerText=`Completed(${completed_count})`;
+  // }
+  // counts();
+  // setInterval(counts, 5);
 
   let navbarItems = document.querySelectorAll(".navbar a");
   navbarItems.forEach((item) => {

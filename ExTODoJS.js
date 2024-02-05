@@ -30,7 +30,7 @@ function showNotification(message, type) {
 function confirmFunction(message, content, callback) {
   let confirmBox = document.createElement("div");
   confirmBox.classList.add("confirm-box");
-
+  
   let messageBox = document.createElement("div");
   messageBox.classList.add("message-box");
   messageBox.innerText = message;
@@ -308,8 +308,8 @@ function delete_function(delete_task) {
     document.querySelector(".active").id == "Completed" ||
     (delete_task.parentElement.firstElementChild.firstChild.style
       .backgroundColor == "green" &&
-      document.querySelector(".active").id == "All" &&
-      input.value == "")
+      document.querySelector(".active").id == "All") &&
+      input.value == ""
   ) {
     confirmFunction(
       `Are you sure want to delete the TASK?\n\n`,
@@ -338,8 +338,8 @@ function delete_function(delete_task) {
     document.querySelector(".active").id == "Progress" ||
     (delete_task.parentElement.firstElementChild.firstChild.style
       .backgroundColor == "orange" &&
-      document.querySelector(".active").id == "All" &&
-      input.value == "")
+      document.querySelector(".active").id == "All") &&
+      input.value == ""
   ) {
     confirmFunction(
       `Are you sure want to delete the TASK?\n\n`,

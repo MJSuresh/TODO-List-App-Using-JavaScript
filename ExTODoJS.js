@@ -303,12 +303,13 @@ function delete_function(delete_task) {
     delete_task.parentElement.previousElementSibling.querySelector(
       "span"
     ).innerHTML;
-
+    
   if (
     document.querySelector(".active").id == "Completed" ||
     (delete_task.parentElement.firstElementChild.firstChild.style
       .backgroundColor == "green" &&
-      document.querySelector(".active").id == "All")
+      document.querySelector(".active").id == "All" &&
+      input.value == "")
   ) {
     confirmFunction(
       `Are you sure want to delete the TASK?\n\n`,
@@ -337,7 +338,8 @@ function delete_function(delete_task) {
     document.querySelector(".active").id == "Progress" ||
     (delete_task.parentElement.firstElementChild.firstChild.style
       .backgroundColor == "orange" &&
-      document.querySelector(".active").id == "All")
+      document.querySelector(".active").id == "All" &&
+      input.value == "")
   ) {
     confirmFunction(
       `Are you sure want to delete the TASK?\n\n`,
@@ -357,6 +359,8 @@ function delete_function(delete_task) {
         }
       }
     );
+  } else {
+    showNotification("Can't delete the task while updating.", "warning");
   }
 }
 

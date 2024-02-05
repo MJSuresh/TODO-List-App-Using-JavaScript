@@ -11,16 +11,6 @@ body {
     background-color: rgb(43, 42, 42);
 }
 
-.material-symbols-outlined {
-    font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 24;
-    color: black;
-    cursor: pointer;
-}
-
 h2 {
     margin: 0 auto;
 }
@@ -58,6 +48,7 @@ main {
 
 .middle {
     height: 100%;
+    width: 100%;
 }
 
 .left {
@@ -162,6 +153,7 @@ main {
     margin: 0;
     padding: 0;
     width: 100%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -179,13 +171,13 @@ main {
 
 #tasks .task {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     background: rgba(255, 255, 255, 0.8);
     padding: 0.6rem;
     border-radius: 9px;
     margin-bottom: 5px;
-    width: 95%;
     overflow: hidden;
+    font-weight: bold;
 }
 
 /* Target the task list item when hovering */
@@ -198,7 +190,6 @@ li.task {
     transition: 0.05s;
 }
 
-#tasks .task .content input,
 #tasks .task .actions button {
     cursor: pointer;
     border: none;
@@ -207,16 +198,15 @@ li.task {
 }
 
 .task .content {
-    /* flex: 1 1 0%; */
     display: flex;
     margin: 0 0;
-    width: 75%;
+    width: 85%;
 }
 
 .task .content .text {
     color: black;
     font-size: 1rem;
-    width: 98%;
+    width: 100%;
     display: block;
     transition: 0.4s;
     word-wrap: break-word;
@@ -224,15 +214,15 @@ li.task {
 
 .task .actions {
     display: flex;
-    margin: 0 -0.5rem;
-    width: 25%;
+    justify-content: space-between;
+    /* margin: 0 -0.5rem;    */
+    width: 15%;
 }
 
 .task .actions button {
     cursor: pointer;
-    margin: 0 0.5rem;
+    /* margin: 0 0.2rem; */
     font-size: 1rem;
-    font-weight: bold;
     /* transition: 0.4s; */
 }
 
@@ -240,24 +230,16 @@ li.task {
     opacity: 0.7;
 }
 
-/* .task .actions button:active {
-    opacity: 0.6;
-} */
-
 .task .actions .delete,
 .task .actions .edit {
-    color: crimson;
+    color: rgb(182, 41, 72);
 }
 
 .wrap-css {
     text-overflow: ellipsis;
 }
 
-.material-symbols-outlined:hover {
-    opacity: 0.75;
-}
-
-/* for showNotification */
+/* for toast notification */
 #notification-popup {
     position: fixed;
     bottom: 6%;
@@ -295,6 +277,78 @@ li.task {
     text-shadow: 2px 0px 1px black;
 }
 
+/* css for confirmation window */
+.confirm-box {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Position relative to the viewport */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* Center horizontally and vertically */
+    transform: translate(-50%, -50%);
+}
+
+.message-box {
+    background: rgb(140, 140, 140);
+    background: linear-gradient(90deg, rgba(140, 140, 140, 1) 0%, rgba(255, 255, 255, 1) 100%);
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 350px;
+}
+
+.popTaskBox {
+    max-width: 350px;
+    max-height: 100px;
+    overflow: auto;
+    word-wrap: break-word;
+    font-weight: bold;
+    font-size: small;
+}
+
+.button-box {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.yes-button,
+.no-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: black;
+    font-weight: bold;
+}
+
+.yes-button {
+    background-color: green;
+}
+
+.yes-button:hover {
+    opacity: 0.7;
+}
+
+.no-button {
+    background-color: red;
+}
+
+.no-button:hover {
+    opacity: 0.7;
+}
+
 @media screen and (max-width: 360px) {
 
     body {
@@ -306,9 +360,10 @@ li.task {
     }
 
     .forms {
-        width: 95%;
-        transform: translate(2.5%, 30%);
+        width: 100%;
+        transform: translate(0%, 30%);
         height: 40px;
+        margin-left: 0;
     }
 
     .forms input {
@@ -322,13 +377,14 @@ li.task {
     }
 
     .navbar a {
-        font-size: 18px;
+        font-size: 14px;
         padding: 12px;
         align-items: center;
+        letter-spacing: 0px;
     }
 
     .navbar {
-        width: 96%;
+        width: 100%;
         align-items: center;
         height: 45px;
         position: relative;
@@ -338,9 +394,10 @@ li.task {
     }
 
     .right {
-        margin-left: 2.5%;
-        width: 95%;
+        /* margin-left: 2.5%; */
+        width: 100%;
         height: 80%;
+        margin-left: 0;
     }
 
     #tasks .task {
@@ -350,6 +407,36 @@ li.task {
 
     #tasks .task .content input {
         padding-top: 4px;
+    }
+
+    .task .content {
+        width: 75%;
+    }
+
+    .task .content .text {
+        font-size: 0.8rem;
+    }
+
+    .task .actions {
+        /* display: flex; */
+        /* justify-content: space-between; */
+        /* margin: 0 0.5rem;    */
+        margin-left: 5px;
+        margin-right: 10px;
+        width: 20%;
+    }
+
+    .task .actions button {
+        margin: 0 0;
+        font-size: 0.8rem;
+    }
+
+    .message-box {
+        width: 200px;
+    }
+
+    .popTaskBox {
+        max-width: 200px;
     }
 }
 
@@ -409,6 +496,28 @@ li.task {
 
         #tasks .task .content input {
             padding-top: 4px;
+        }
+
+        .task .content {
+            width: 75%;
+        }
+
+        .task .actions {
+            margin-left: 5px;
+            margin-right: 10px;
+            width: 20%;
+        }
+
+        .task .actions button {
+            margin: 0 0;
+        }
+
+        .message-box {
+            width: 300px;
+        }
+
+        .popTaskBox {
+            max-width: 300px;
         }
     }
 }
@@ -532,67 +641,15 @@ li.task {
         #tasks .task .content input {
             padding-top: 4px;
         }
+
+        .task .content {
+            width: 85%;
+        }
+
+        .task .actions {
+            margin-left: 25px;
+            margin-right: 10px;
+            width: 10%;
+        }
     }
-}
-
-/* css for confirmation window */
-.confirm-box {
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Position relative to the viewport */
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* Center horizontally and vertically */
-    transform: translate(-50%, -50%);
-}
-
-.message-box {
-    background: rgb(140, 140, 140);
-    background: linear-gradient(90deg, rgba(140, 140, 140, 1) 0%, rgba(255, 255, 255, 1) 100%);
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.5;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-.button-box {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-around;
-}
-
-.yes-button,
-.no-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin: 0 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    color: #fff;
-}
-
-.yes-button {
-    background-color: green;
-}
-
-.yes-button:hover {
-    opacity: 0.7;
-}
-
-.no-button {
-    background-color: red;
-}
-
-.no-button:hover {
-    opacity: 0.7;
 }

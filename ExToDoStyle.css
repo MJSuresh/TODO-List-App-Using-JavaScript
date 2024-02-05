@@ -156,15 +156,15 @@ main {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-::-webkit-scrollbar {
+#tasks::-webkit-scrollbar {
     width: 6px;
 }
 
-::-webkit-scrollbar-track {
+#tasks::-webkit-scrollbar-track {
     background: #d1e5ff;
 }
 
-::-webkit-scrollbar-thumb {
+#tasks::-webkit-scrollbar-thumb {
     background: linear-gradient(#642bff, #ff22e6);
     border-radius: 10px;
 }
@@ -310,6 +310,19 @@ li.task {
     font-size: small;
 }
 
+.popTaskBox::-webkit-scrollbar {
+    width: 6px;
+}
+
+.popTaskBox::-webkit-scrollbar-track {
+    background: #d1e5ff;
+}
+
+.popTaskBox::-webkit-scrollbar-thumb {
+    background: linear-gradient(#642bff, #ff22e6);
+    border-radius: 10px;
+}
+
 .button-box {
     margin-top: 20px;
     display: flex;
@@ -355,8 +368,8 @@ li.task {
     }
 
     .forms {
-        width: 100%;
-        transform: translate(0%, 30%);
+        width: 98%;
+        transform: translate(1%, 30%);
         height: 40px;
         margin-left: 0;
     }
@@ -373,7 +386,7 @@ li.task {
     }
 
     .navbar {
-        width: 100%;
+        width: 98%;
         align-items: center;
         height: 45px;
         position: relative;
@@ -383,9 +396,9 @@ li.task {
     }
 
     .right {
-        width: 100%;
+        width: 98%;
         height: 80%;
-        margin-left: 0;
+        margin-left: 1%;
     }
 
     #tasks .task .content input {
@@ -403,7 +416,7 @@ li.task {
     .task .actions {
         margin-left: 5px;
         margin-right: 10px;
-        width: 20%;
+        width: 19%;
     }
 
     .task .actions button {

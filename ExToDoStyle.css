@@ -361,12 +361,6 @@ li.task {
         margin-left: 0;
     }
 
-    .forms input {
-        font-size: 0.9rem;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
     .fa-square-plus {
         font-size: 40px;
     }
@@ -392,11 +386,6 @@ li.task {
         width: 100%;
         height: 80%;
         margin-left: 0;
-    }
-
-    #tasks .task {
-        padding: 10px;
-        margin-bottom: 5px;
     }
 
     #tasks .task .content input {
@@ -453,12 +442,6 @@ li.task {
             height: 45px;
         }
 
-        .forms input {
-            font-size: 0.9rem;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-
         .fa-square-plus {
             font-size: 46px;
         }
@@ -483,11 +466,6 @@ li.task {
             margin-left: 2.5%;
             width: 95%;
             height: 80%;
-        }
-
-        #tasks .task {
-            padding: 10px;
-            margin-bottom: 5px;
         }
 
         #tasks .task .content input {
@@ -533,12 +511,6 @@ li.task {
             width: 80%;
             transform: translate(13%, 55%);
             height: 50px;
-        }
-
-        .forms input {
-            font-size: 0.9rem;
-            margin-left: 10px;
-            margin-right: 10px;
         }
 
         .fa-square-plus {
@@ -596,12 +568,6 @@ li.task {
             height: 50px;
         }
 
-        .forms input {
-            font-size: 0.9rem;
-            margin-left: 10px;
-            margin-right: 10px;
-        }
-
         .fa-square-plus {
             font-size: 49.99px;
         }
@@ -631,7 +597,6 @@ li.task {
 
         #tasks .task {
             padding: 15px;
-            margin-bottom: 5px;
         }
 
         #tasks .task .content input {

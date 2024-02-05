@@ -303,7 +303,7 @@ function delete_function(delete_task) {
     delete_task.parentElement.previousElementSibling.querySelector(
       "span"
     ).innerHTML;
-    
+
   if (
     document.querySelector(".active").id == "Completed" ||
     (delete_task.parentElement.firstElementChild.firstChild.style

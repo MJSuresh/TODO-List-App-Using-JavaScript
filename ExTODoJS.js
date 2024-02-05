@@ -326,11 +326,9 @@ function delete_function(delete_task) {
           if (document.querySelector(".active").id == "Completed") {
             completed.click();
             counts();
-            input.value = "";
           } else {
             all.click();
             counts();
-            input.value = "";
           }
         }
       }
@@ -352,11 +350,9 @@ function delete_function(delete_task) {
           if (document.querySelector(".active").id == "Progress") {
             progress.click();
             counts();
-            input.value = "";
           } else {
             all.click();
             counts();
-            input.value = "";
           }
         }
       }

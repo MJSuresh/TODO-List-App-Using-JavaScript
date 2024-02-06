@@ -357,7 +357,7 @@ li.task {
     opacity: 0.7;
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 359px) {
 
     body {
         background-image: url(ToDo_BG_Mobiles.jpg);
@@ -406,7 +406,7 @@ li.task {
     }
 
     .task .content {
-        width: 75%;
+        width: 73%;
     }
 
     .task .content .text {
@@ -416,7 +416,7 @@ li.task {
     .task .actions {
         margin-left: 5px;
         margin-right: 10px;
-        width: 19%;
+        width: 20%;
     }
 
     .task .actions button {
@@ -438,7 +438,7 @@ li.task {
     }
 }
 
-@media screen and (min-width: 361px) {
+@media screen and (min-width: 360px) {
     @media screen and (max-width: 600px) {
 
         body {

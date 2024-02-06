@@ -30,7 +30,7 @@ function showNotification(message, type) {
 function confirmFunction(message, content, callback) {
   let confirmBox = document.createElement("div");
   confirmBox.classList.add("confirm-box");
-  
+
   let messageBox = document.createElement("div");
   messageBox.classList.add("message-box");
   messageBox.innerText = message;
@@ -141,7 +141,7 @@ window.addEventListener("load", () => {
       }
       taskBox.innerHTML = li2;
     } else {
-      taskBox.innerHTML = `<span class="no_task_span">You don't have any Completed Task</span>`;
+      taskBox.innerHTML = `<span class="no_task_span">You don't have any Finished Task</span>`;
     }
   });
 });
@@ -178,8 +178,11 @@ function submitTask(task, edit_and_save2) {
     input.value = "";
     input.focus();
     counts();
+    handleInputOrSubmit();
     if (toast_check == "null") {
       showNotification("Task added successfully.", "success");
+    } else if (task == toast_check) {
+      showNotification("Task discarded.", "warning");
     } else {
       showNotification("Task updated successfully.", "success");
     }
@@ -308,8 +311,8 @@ function delete_function(delete_task) {
     document.querySelector(".active").id == "Completed" ||
     (delete_task.parentElement.firstElementChild.firstChild.style
       .backgroundColor == "green" &&
-      document.querySelector(".active").id == "All") &&
-      input.value == ""
+      document.querySelector(".active").id == "All" &&
+      input.value == "")
   ) {
     confirmFunction(
       `Are you sure want to delete the TASK?\n\n`,
@@ -338,8 +341,8 @@ function delete_function(delete_task) {
     document.querySelector(".active").id == "Progress" ||
     (delete_task.parentElement.firstElementChild.firstChild.style
       .backgroundColor == "orange" &&
-      document.querySelector(".active").id == "All") &&
-      input.value == ""
+      document.querySelector(".active").id == "All" &&
+      input.value == "")
   ) {
     confirmFunction(
       `Are you sure want to delete the TASK?\n\n`,
@@ -369,8 +372,16 @@ function counts() {
   progress_count = all_count - completedTodos.length;
   completed_count = completedTodos.length;
   document.getElementById("All").innerHTML = `All(${all_count})`;
-  document.getElementById("Progress").innerHTML = `Progress(${progress_count})`;
+  document.getElementById("Progress").innerHTML = `Pending(${progress_count})`;
   document.getElementById(
     "Completed"
   ).innerHTML = `Finished(${completed_count})`;
+}
+
+function handleInputOrSubmit() {
+  const tasksList = document.getElementById("tasks");
+  // tasksList.scrollTop = 0; // Scroll to top immediately
+
+  // For smoother scrolling with animation:
+  tasksList.scrollTo({ top: 0, behavior: "smooth" });
 }

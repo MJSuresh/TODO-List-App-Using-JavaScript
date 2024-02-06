@@ -204,9 +204,9 @@ function display(task) {
                           <span class="text">${task}</span>
                           </div>
                           <div class="actions">
-                          <button onclick="checkbox_function(this)" id="myCheckbox" ><i class="fa-regular fa-circle-check" style="background-color: orange;border-radius:100%;"></i></button>
-                            <button class="edit" onclick="edit_function(this)"><i class="fa-solid fa-pen"></i></button>
-                            <button class="delete" onclick="delete_function(this)"><i class="fa-solid fa-trash"></i></button>
+                          <button title="Pending Task" onclick="checkbox_function(this)" id="myCheckbox" ><i class="fa-regular fa-circle-check" style="background-color: orange;border-radius:100%;"></i></button>
+                            <button class="edit" title="Edit" onclick="edit_function(this)"><i class="fa-solid fa-pen"></i></button>
+                            <button class="delete" title="Delete" onclick="delete_function(this)"><i class="fa-solid fa-trash"></i></button>
                           </div>
           </li>`;
     li2 = li + li2;
@@ -216,9 +216,9 @@ function display(task) {
       <span class="text">${task}</span>
       </div>
       <div class="actions">
-      <button onclick="checkbox_function(this)" id="myCheckbox" ><i class="fa-regular fa-circle-check" style="background-color: green;border-radius:100%;"></i></button>
-        <button class="edit" onclick="edit_function(this)"><i class="fa-solid fa-pen"></i></button>
-        <button class="delete" onclick="delete_function(this)"><i class="fa-solid fa-trash"></i></button>
+      <button title="Finished Task" onclick="checkbox_function(this)" id="myCheckbox" ><i class="fa-regular fa-circle-check" style="background-color: green;border-radius:100%;"></i></button>
+        <button class="edit" title="Edit" onclick="edit_function(this)"><i class="fa-solid fa-pen"></i></button>
+        <button class="delete" title="Delete" onclick="delete_function(this)"><i class="fa-solid fa-trash"></i></button>
       </div>
   </li>`;
     li2 = li + li2;

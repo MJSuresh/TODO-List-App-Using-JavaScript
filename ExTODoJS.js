@@ -81,7 +81,7 @@ window.addEventListener("load", () => {
   completed = document.querySelector("#Completed");
   taskBox = document.querySelector("#tasks");
   input = document.querySelector("#title");
-  edit_and_save = "null";
+  edit_and_save = "empty_or_null";
 
   let navbarItems = document.querySelectorAll(".navbar a");
   navbarItems.forEach((item) => {
@@ -151,22 +151,20 @@ function submitTask(task, edit_and_save2) {
   task = task.replace(/[^a-zA-Z0-9 ]/g, "");
   task = task.replace(/\s+/g, " ");
   task = task.trim();
-  const toast_check = edit_and_save2;
 
-  if (todos.includes(edit_and_save2)) {
-    todos.splice(todos.indexOf(edit_and_save2), 1);
-    // localStorage.setItem("todos", JSON.stringify(todos));
-
-    // if(completedTodos.includes(edit_and_save2)){
-    //   completedTodos.splice(completedTodos.indexOf(edit_and_save2),1);
-    //   completedTodos.push(task2);
-    //   localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
-    // }
-    edit_and_save = "null";
-    edit_and_save2 = "null";
+  // for not accepting irrespective of existing task
+  let flag=true;
+  for(let i=0;i<todos.length;i++){
+      if(todos[i].toLowerCase()==task.toLowerCase()){
+        flag=false;
+      }
   }
 
-  if (!todos.includes(task) && task != "" && edit_and_save2 == "null") {
+  if (!todos.includes(task) && task != "" && flag) {
+    if (todos.includes(edit_and_save2)) {
+      todos.splice(todos.indexOf(edit_and_save2), 1);
+      edit_and_save = "empty_or_null";
+    }
     todos.push(task);
     localStorage.setItem("todos", JSON.stringify(todos)); // adding the task into local storage
 
@@ -180,10 +178,8 @@ function submitTask(task, edit_and_save2) {
     input.focus();
     counts();
     handleInputOrSubmit();
-    if (toast_check == "null") {
+    if (edit_and_save2 == "empty_or_null") {
       showNotification("Task added successfully.", "success");
-    } else if (task == toast_check) {
-      showNotification("No change were made.", "warning");
     } else {
       showNotification("Task updated successfully.", "success");
     }
@@ -192,9 +188,8 @@ function submitTask(task, edit_and_save2) {
     input.focus();
     showNotification("Empty/Invalid Task not accepted.", "warning");
   } else {
-    input.value = "";
     input.focus();
-    showNotification("Task already added.", "warning");
+    showNotification("Task already exist.", "warning");
   }
 }
 
@@ -238,7 +233,7 @@ function checkbox_function(check_task) {
       document.querySelector(".active").id == "All")
   ) {
     confirmFunction(
-      "Task still in progress?",
+      "Task still in pending?",
       (content = ""),
       function (result) {
         if (result) {
@@ -247,7 +242,7 @@ function checkbox_function(check_task) {
             "completedTodos",
             JSON.stringify(completedTodos)
           );
-          showNotification("Task moved to Progress.", "process");
+          showNotification("Task moved to Pending.", "process");
           if (document.querySelector(".active").id == "Completed") {
             completed.click();
             counts();
@@ -264,7 +259,7 @@ function checkbox_function(check_task) {
       document.querySelector(".active").id == "All")
   ) {
     confirmFunction(
-      "Are you sure to complete the task?",
+      "Are you want to complete the task?",
       (content = ""),
       function (result) {
         if (result) {
@@ -273,7 +268,7 @@ function checkbox_function(check_task) {
             "completedTodos",
             JSON.stringify(completedTodos)
           );
-          showNotification("Task moved to Completed.", "success");
+          showNotification("Task completed.", "success");
           if (document.querySelector(".active").id == "Progress") {
             progress.click();
             counts();
@@ -316,7 +311,7 @@ function delete_function(delete_task) {
       input.value == "")
   ) {
     confirmFunction(
-      `Are you sure want to delete the TASK?\n\n`,
+      `Are you want to delete the TASK?\n\n`,
       update_delete_task,
       function (result) {
         if (result) {
@@ -327,7 +322,7 @@ function delete_function(delete_task) {
             "completedTodos",
             JSON.stringify(completedTodos)
           );
-          showNotification("Task deleted.", "warning");
+          showNotification("Task deleted successfully.", "warning");
           if (document.querySelector(".active").id == "Completed") {
             completed.click();
             counts();
@@ -346,13 +341,13 @@ function delete_function(delete_task) {
       input.value == "")
   ) {
     confirmFunction(
-      `Are you sure want to delete the TASK?\n\n`,
+      `Are you want to delete the TASK?\n\n`,
       update_delete_task,
       function (result) {
         if (result) {
           todos.splice(todos.indexOf(update_delete_task), 1);
           localStorage.setItem("todos", JSON.stringify(todos));
-          showNotification("Task deleted.", "warning");
+          showNotification("Task deleted successfully.", "warning");
           if (document.querySelector(".active").id == "Progress") {
             progress.click();
             counts();
@@ -380,7 +375,7 @@ function counts() {
 }
 
 function handleInputOrSubmit() {
-  // tasksList.scrollTop = 0; // Scroll to top immediately
+  // taskBox.scrollTop = 0; // Scroll to top immediately
 
   // For smoother scrolling
   taskBox.scrollTo({ top: 0, behavior: "smooth" });

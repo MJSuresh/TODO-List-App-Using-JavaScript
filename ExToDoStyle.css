@@ -230,10 +230,6 @@ li.task {
     color: rgb(182, 41, 72);
 }
 
-.wrap-css {
-    text-overflow: ellipsis;
-}
-
 /* for toast notification */
 #notification-popup {
     position: fixed;

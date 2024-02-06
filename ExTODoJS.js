@@ -5,6 +5,7 @@ let input, taskBefore, confirm_message;
 let li2 = "";
 let edit_and_save;
 let all_count, progress_count, completed_count;
+let taskBox;
 
 todos = JSON.parse(localStorage.getItem("todos")) || [];
 completedTodos = JSON.parse(localStorage.getItem("completedTodos")) || [];
@@ -78,7 +79,7 @@ window.addEventListener("load", () => {
   all = document.querySelector("#All");
   progress = document.querySelector("#Progress");
   completed = document.querySelector("#Completed");
-  let taskBox = document.querySelector("#tasks");
+  taskBox = document.querySelector("#tasks");
   input = document.querySelector("#title");
   edit_and_save = "null";
 
@@ -147,14 +148,14 @@ window.addEventListener("load", () => {
 });
 
 function submitTask(task, edit_and_save2) {
-  task = task.trim();
   task = task.replace(/[^a-zA-Z0-9 ]/g, "");
   task = task.replace(/\s+/g, " ");
+  task = task.trim();
   const toast_check = edit_and_save2;
 
   if (todos.includes(edit_and_save2)) {
     todos.splice(todos.indexOf(edit_and_save2), 1);
-    localStorage.setItem("todos", JSON.stringify(todos));
+    // localStorage.setItem("todos", JSON.stringify(todos));
 
     // if(completedTodos.includes(edit_and_save2)){
     //   completedTodos.splice(completedTodos.indexOf(edit_and_save2),1);
@@ -182,7 +183,7 @@ function submitTask(task, edit_and_save2) {
     if (toast_check == "null") {
       showNotification("Task added successfully.", "success");
     } else if (task == toast_check) {
-      showNotification("Task discarded.", "warning");
+      showNotification("No change were made.", "warning");
     } else {
       showNotification("Task updated successfully.", "success");
     }
@@ -297,7 +298,7 @@ function edit_function(edit_task) {
     input.focus();
     edit_and_save = update_edit_task;
   } else {
-    showNotification("Can't edit the completed task.", "warning");
+    showNotification("Can't edit the finished task.", "warning");
   }
 }
 
@@ -379,9 +380,8 @@ function counts() {
 }
 
 function handleInputOrSubmit() {
-  const tasksList = document.getElementById("tasks");
   // tasksList.scrollTop = 0; // Scroll to top immediately
 
-  // For smoother scrolling with animation:
-  tasksList.scrollTo({ top: 0, behavior: "smooth" });
+  // For smoother scrolling
+  taskBox.scrollTo({ top: 0, behavior: "smooth" });
 }

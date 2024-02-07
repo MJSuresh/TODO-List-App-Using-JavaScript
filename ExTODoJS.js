@@ -227,7 +227,7 @@ function checkbox_function(check_task) {
   if (
     document.querySelector(".active").id == "Completed" ||
     (check_task.firstChild.style.backgroundColor == "green" &&
-      document.querySelector(".active").id == "All")
+      document.querySelector(".active").id == "All" && input.value=="")
   ) {
     confirmFunction(
       "Task still in pending?",
@@ -253,7 +253,7 @@ function checkbox_function(check_task) {
   } else if (
     document.querySelector(".active").id == "Progress" ||
     (check_task.firstChild.style.backgroundColor == "orange" &&
-      document.querySelector(".active").id == "All")
+      document.querySelector(".active").id == "All" && input.value=="")
   ) {
     confirmFunction(
       "Are you want to complete the task?",
@@ -276,6 +276,8 @@ function checkbox_function(check_task) {
         }
       }
     );
+  } else {
+    showNotification("Can't change the task status while updating.", "warning");
   }
 }
 

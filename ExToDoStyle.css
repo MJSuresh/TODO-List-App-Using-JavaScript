@@ -156,15 +156,15 @@ main {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-#tasks::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 6px;
 }
 
-#tasks::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: #d1e5ff;
 }
 
-#tasks::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: linear-gradient(#642bff, #ff22e6);
     border-radius: 10px;
 }
@@ -236,7 +236,7 @@ li.task {
     bottom: 6%;
     left: 50%;
     transform: translateX(-50%);
-    width: 240px;
+    max-width: 350px;
     padding: 15px;
     border-radius: 5px;
     /* Ensure it's above other content */
@@ -304,19 +304,6 @@ li.task {
     word-wrap: break-word;
     font-weight: bold;
     font-size: small;
-}
-
-.popTaskBox::-webkit-scrollbar {
-    width: 6px;
-}
-
-.popTaskBox::-webkit-scrollbar-track {
-    background: #d1e5ff;
-}
-
-.popTaskBox::-webkit-scrollbar-thumb {
-    background: linear-gradient(#642bff, #ff22e6);
-    border-radius: 10px;
 }
 
 .button-box {
@@ -432,6 +419,10 @@ li.task {
         font-size: 13px;
         margin-left: 5px;
     }
+
+    #notification-popup {
+        width: 240px;
+    }
 }
 
 @media screen and (min-width: 360px) {
@@ -501,6 +492,10 @@ li.task {
 
         .popTaskBox {
             max-width: 300px;
+        }
+
+        #notification-popup {
+            width: 300px;
         }
     }
 }

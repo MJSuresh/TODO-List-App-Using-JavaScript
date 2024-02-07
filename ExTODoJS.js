@@ -224,10 +224,9 @@ function checkbox_function(check_task) {
       "span"
     ).innerHTML;
 
-  if (
-    document.querySelector(".active").id == "Completed" ||
+  if (input.value == "" && document.querySelector(".active").id == "Completed" ||
     (check_task.firstChild.style.backgroundColor == "green" &&
-      document.querySelector(".active").id == "All" && input.value=="")
+      document.querySelector(".active").id == "All")
   ) {
     confirmFunction(
       "Task still in pending?",
@@ -250,10 +249,9 @@ function checkbox_function(check_task) {
         }
       }
     );
-  } else if (
-    document.querySelector(".active").id == "Progress" ||
+  } else if (input.value == "" && document.querySelector(".active").id == "Progress" ||
     (check_task.firstChild.style.backgroundColor == "orange" &&
-      document.querySelector(".active").id == "All" && input.value=="")
+      document.querySelector(".active").id == "All")
   ) {
     confirmFunction(
       "Are you want to complete the task?",
@@ -302,12 +300,10 @@ function delete_function(delete_task) {
       "span"
     ).innerHTML;
 
-  if (
-    document.querySelector(".active").id == "Completed" ||
+  if (input.value == "" && document.querySelector(".active").id == "Completed" ||
     (delete_task.parentElement.firstElementChild.firstChild.style
       .backgroundColor == "green" &&
-      document.querySelector(".active").id == "All" &&
-      input.value == "")
+      document.querySelector(".active").id == "All")
   ) {
     confirmFunction(
       `Are you want to delete the TASK?\n\n`,
@@ -332,12 +328,10 @@ function delete_function(delete_task) {
         }
       }
     );
-  } else if (
-    document.querySelector(".active").id == "Progress" ||
+  } else if (input.value == "" && document.querySelector(".active").id == "Progress" ||
     (delete_task.parentElement.firstElementChild.firstChild.style
       .backgroundColor == "orange" &&
-      document.querySelector(".active").id == "All" &&
-      input.value == "")
+      document.querySelector(".active").id == "All")
   ) {
     confirmFunction(
       `Are you want to delete the TASK?\n\n`,

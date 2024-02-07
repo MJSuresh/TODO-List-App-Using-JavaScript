@@ -3,19 +3,17 @@ let todos = [],
   completedTodos = [];
 let input, taskBefore, confirm_message;
 let li2 = "";
-let edit_and_save;
-let all_count, progress_count, completed_count;
-let taskBox;
+let edit_and_save, taskBox;
 
 todos = JSON.parse(localStorage.getItem("todos")) || [];
 completedTodos = JSON.parse(localStorage.getItem("completedTodos")) || [];
 
 function showNotification(message, type) {
-  let popUp = document.createElement("div");
+  const popUp = document.createElement("div");
   popUp.id = "notification-popup";
   popUp.classList.add(type); // Add class for color (e.g., "success", "warning", "process")
 
-  let content = document.createElement("div");
+  const content = document.createElement("div");
   content.classList.add("popup-content");
   content.textContent = message;
 
@@ -29,49 +27,48 @@ function showNotification(message, type) {
 }
 
 function confirmFunction(message, content, callback) {
-  let confirmBox = document.createElement("div");
+  const confirmBox = document.createElement("div");
   confirmBox.classList.add("confirm-box");
 
-  let messageBox = document.createElement("div");
+  const messageBox = document.createElement("div");
   messageBox.classList.add("message-box");
   messageBox.innerText = message;
   confirmBox.appendChild(messageBox);
 
-  let popTaskBox = document.createElement("div");
+  const popTaskBox = document.createElement("div");
   popTaskBox.classList.add("popTaskBox");
   popTaskBox.innerText = content;
   messageBox.appendChild(popTaskBox);
 
-  let buttonBox = document.createElement("div");
+  const buttonBox = document.createElement("div");
   buttonBox.classList.add("button-box");
   messageBox.appendChild(buttonBox);
 
-  let yesBox = document.createElement("button");
+  const yesBox = document.createElement("button");
   yesBox.classList.add("yes-button");
   yesBox.textContent = "Yes";
   buttonBox.appendChild(yesBox);
 
-  let noBox = document.createElement("button");
+  const noBox = document.createElement("button");
   noBox.classList.add("no-button");
   noBox.textContent = "No";
   buttonBox.appendChild(noBox);
 
   document.body.appendChild(confirmBox);
+
   function removeConfirmationBox() {
     document.body.removeChild(confirmBox);
   }
 
-  yesBox.addEventListener("click", yesButtonClick);
-  function yesButtonClick() {
+  yesBox.addEventListener("click", () => {
     callback(true);
     removeConfirmationBox();
-  }
+  });
 
-  noBox.addEventListener("click", noButtonClick);
-  function noButtonClick() {
+  noBox.addEventListener("click", () => {
     callback(false);
     removeConfirmationBox();
-  }
+  });
 }
 
 window.addEventListener("load", () => {
@@ -153,11 +150,11 @@ function submitTask(task, edit_and_save2) {
   task = task.trim();
 
   // for not accepting irrespective of existing task
-  let flag=true;
-  for(let i=0;i<todos.length;i++){
-      if(todos[i].toLowerCase()==task.toLowerCase()){
-        flag=false;
-      }
+  let flag = true;
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].toLowerCase() == task.toLowerCase()) {
+      flag = false;
+    }
   }
 
   if (!todos.includes(task) && task != "" && flag) {
@@ -195,7 +192,7 @@ function submitTask(task, edit_and_save2) {
 
 function display(task) {
   if (!completedTodos.includes(task)) {
-    let li = `<li class="task">
+    const li = `<li class="task">
                           <div class="content">
                           <span class="text">${task}</span>
                           </div>
@@ -207,7 +204,7 @@ function display(task) {
           </li>`;
     li2 = li + li2;
   } else {
-    let li = `<li class="task">
+    const li = `<li class="task">
       <div class="content">
       <span class="text">${task}</span>
       </div>
@@ -283,7 +280,7 @@ function checkbox_function(check_task) {
 }
 
 function edit_function(edit_task) {
-  let update_edit_task =
+  const update_edit_task =
     edit_task.parentElement.previousElementSibling.querySelector(
       "span"
     ).innerHTML;
@@ -364,9 +361,9 @@ function delete_function(delete_task) {
 }
 
 function counts() {
-  all_count = todos.length;
-  progress_count = all_count - completedTodos.length;
-  completed_count = completedTodos.length;
+  const all_count = todos.length;
+  const progress_count = all_count - completedTodos.length;
+  const completed_count = completedTodos.length;
   document.getElementById("All").innerHTML = `All(${all_count})`;
   document.getElementById("Progress").innerHTML = `Pending(${progress_count})`;
   document.getElementById(

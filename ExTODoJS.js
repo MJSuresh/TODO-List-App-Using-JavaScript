@@ -88,6 +88,8 @@ window.addEventListener("load", () => {
     });
   });
 
+  input.value = "";
+  input.focus();
   form.addEventListener("keyup", (e) => {
     // e.preventDefault();
     if (e.key == "Enter") {
@@ -223,57 +225,60 @@ function checkbox_function(check_task) {
     check_task.parentElement.previousElementSibling.querySelector(
       "span"
     ).innerHTML;
-
-  if (input.value == "" && document.querySelector(".active").id == "Completed" ||
-    (check_task.firstChild.style.backgroundColor == "green" &&
-      document.querySelector(".active").id == "All")
-  ) {
-    confirmFunction(
-      "Task still in pending?",
-      (content = ""),
-      function (result) {
-        if (result) {
-          completedTodos.splice(completedTodos.indexOf(update_check_task), 1);
-          localStorage.setItem(
-            "completedTodos",
-            JSON.stringify(completedTodos)
-          );
-          showNotification("Task moved to Pending.", "process");
-          if (document.querySelector(".active").id == "Completed") {
-            completed.click();
-            counts();
-          } else {
-            all.click();
-            counts();
+  if (input.value == "") {
+    if (
+      document.querySelector(".active").id == "Completed" ||
+      (check_task.firstChild.style.backgroundColor == "green" &&
+        document.querySelector(".active").id == "All")
+    ) {
+      confirmFunction(
+        "Task still in pending?",
+        (content = ""),
+        function (result) {
+          if (result) {
+            completedTodos.splice(completedTodos.indexOf(update_check_task), 1);
+            localStorage.setItem(
+              "completedTodos",
+              JSON.stringify(completedTodos)
+            );
+            showNotification("Task moved to Pending.", "process");
+            if (document.querySelector(".active").id == "Completed") {
+              completed.click();
+              counts();
+            } else {
+              all.click();
+              counts();
+            }
           }
         }
-      }
-    );
-  } else if (input.value == "" && document.querySelector(".active").id == "Progress" ||
-    (check_task.firstChild.style.backgroundColor == "orange" &&
-      document.querySelector(".active").id == "All")
-  ) {
-    confirmFunction(
-      "Are you want to complete the task?",
-      (content = ""),
-      function (result) {
-        if (result) {
-          completedTodos.push(update_check_task);
-          localStorage.setItem(
-            "completedTodos",
-            JSON.stringify(completedTodos)
-          );
-          showNotification("Task completed.", "success");
-          if (document.querySelector(".active").id == "Progress") {
-            progress.click();
-            counts();
-          } else {
-            all.click();
-            counts();
+      );
+    } else if (
+      document.querySelector(".active").id == "Progress" ||
+      (check_task.firstChild.style.backgroundColor == "orange" &&
+        document.querySelector(".active").id == "All")
+    ) {
+      confirmFunction(
+        "Are you want to complete the task?",
+        (content = ""),
+        function (result) {
+          if (result) {
+            completedTodos.push(update_check_task);
+            localStorage.setItem(
+              "completedTodos",
+              JSON.stringify(completedTodos)
+            );
+            showNotification("Task completed.", "success");
+            if (document.querySelector(".active").id == "Progress") {
+              progress.click();
+              counts();
+            } else {
+              all.click();
+              counts();
+            }
           }
         }
-      }
-    );
+      );
+    }
   } else {
     showNotification("Can't change the task status while updating.", "warning");
   }
@@ -299,58 +304,64 @@ function delete_function(delete_task) {
     delete_task.parentElement.previousElementSibling.querySelector(
       "span"
     ).innerHTML;
-
-  if (input.value == "" && document.querySelector(".active").id == "Completed" ||
-    (delete_task.parentElement.firstElementChild.firstChild.style
-      .backgroundColor == "green" &&
-      document.querySelector(".active").id == "All")
-  ) {
-    confirmFunction(
-      `Are you want to delete the TASK?\n\n`,
-      update_delete_task,
-      function (result) {
-        if (result) {
-          todos.splice(todos.indexOf(update_delete_task), 1);
-          completedTodos.splice(completedTodos.indexOf(update_delete_task), 1);
-          localStorage.setItem("todos", JSON.stringify(todos));
-          localStorage.setItem(
-            "completedTodos",
-            JSON.stringify(completedTodos)
-          );
-          showNotification("Task deleted successfully.", "warning");
-          if (document.querySelector(".active").id == "Completed") {
-            completed.click();
-            counts();
-          } else {
-            all.click();
-            counts();
+  if (input.value == "") {
+    if (
+      document.querySelector(".active").id == "Completed" ||
+      (delete_task.parentElement.firstElementChild.firstChild.style
+        .backgroundColor == "green" &&
+        document.querySelector(".active").id == "All")
+    ) {
+      confirmFunction(
+        `Are you want to delete the TASK?\n\n`,
+        update_delete_task,
+        function (result) {
+          if (result) {
+            todos.splice(todos.indexOf(update_delete_task), 1);
+            completedTodos.splice(
+              completedTodos.indexOf(update_delete_task),
+              1
+            );
+            localStorage.setItem("todos", JSON.stringify(todos));
+            localStorage.setItem(
+              "completedTodos",
+              JSON.stringify(completedTodos)
+            );
+            showNotification("Task deleted successfully.", "warning");
+            if (document.querySelector(".active").id == "Completed") {
+              completed.click();
+              counts();
+            } else {
+              all.click();
+              counts();
+            }
           }
         }
-      }
-    );
-  } else if (input.value == "" && document.querySelector(".active").id == "Progress" ||
-    (delete_task.parentElement.firstElementChild.firstChild.style
-      .backgroundColor == "orange" &&
-      document.querySelector(".active").id == "All")
-  ) {
-    confirmFunction(
-      `Are you want to delete the TASK?\n\n`,
-      update_delete_task,
-      function (result) {
-        if (result) {
-          todos.splice(todos.indexOf(update_delete_task), 1);
-          localStorage.setItem("todos", JSON.stringify(todos));
-          showNotification("Task deleted successfully.", "warning");
-          if (document.querySelector(".active").id == "Progress") {
-            progress.click();
-            counts();
-          } else {
-            all.click();
-            counts();
+      );
+    } else if (
+      document.querySelector(".active").id == "Progress" ||
+      (delete_task.parentElement.firstElementChild.firstChild.style
+        .backgroundColor == "orange" &&
+        document.querySelector(".active").id == "All")
+    ) {
+      confirmFunction(
+        `Are you want to delete the TASK?\n\n`,
+        update_delete_task,
+        function (result) {
+          if (result) {
+            todos.splice(todos.indexOf(update_delete_task), 1);
+            localStorage.setItem("todos", JSON.stringify(todos));
+            showNotification("Task deleted successfully.", "warning");
+            if (document.querySelector(".active").id == "Progress") {
+              progress.click();
+              counts();
+            } else {
+              all.click();
+              counts();
+            }
           }
         }
-      }
-    );
+      );
+    }
   } else {
     showNotification("Can't delete the task while updating.", "warning");
   }

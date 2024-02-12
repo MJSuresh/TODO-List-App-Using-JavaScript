@@ -154,9 +154,11 @@ main {
     padding: 0;
     width: 100%;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: #642bff #fff;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 6px;
 }
 
@@ -167,7 +169,7 @@ main {
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(#642bff, #ff22e6);
     border-radius: 10px;
-}
+} */
 
 #tasks .task {
     display: flex;
@@ -304,6 +306,8 @@ li.task {
     word-wrap: break-word;
     font-weight: bold;
     font-size: small;
+    scrollbar-width: thin;
+    scrollbar-color: #642bff #fff;
 }
 
 .button-box {

@@ -219,7 +219,6 @@ li.task {
     color: rgb(182, 41, 72);
 }
 
-/* for toast notification */
 #notification-popup {
     position: fixed;
     bottom: 6%;
@@ -228,12 +227,10 @@ li.task {
     max-width: 350px;
     padding: 15px;
     border-radius: 5px;
-    /* Ensure it's above other content */
     z-index: 999;
     color: white;
     text-align: center;
     font-weight: bold;
-    /* Smooth fade-in/out effect */
     transition: opacity 0.3s ease-in-out;
 }
 
@@ -257,7 +254,6 @@ li.task {
     text-shadow: 2px 0px 1px black;
 }
 
-/* css for confirmation window */
 .confirm-box {
     width: 100%;
     height: 100%;
@@ -265,11 +261,9 @@ li.task {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Position relative to the viewport */
     position: fixed;
     top: 50%;
     left: 50%;
-    /* Center horizontally and vertically */
     transform: translate(-50%, -50%);
 }
 
@@ -294,7 +288,7 @@ li.task {
     font-weight: bold;
     font-size: small;
     scrollbar-width: thin;
-    scrollbar-color: #642bff #fff;  
+    scrollbar-color: #642bff #fff;
 }
 
 .button-box {

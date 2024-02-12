@@ -232,8 +232,8 @@ function checkbox_function(check_task) {
         document.querySelector(".active").id == "All")
     ) {
       confirmFunction(
-        "Task still in pending?",
-        (content = ""),
+        "Task still in pending?\n\n",
+        update_check_task,
         function (result) {
           if (result) {
             completedTodos.splice(completedTodos.indexOf(update_check_task), 1);
@@ -258,8 +258,8 @@ function checkbox_function(check_task) {
         document.querySelector(".active").id == "All")
     ) {
       confirmFunction(
-        "Are you want to complete the task?",
-        (content = ""),
+        "Are you want to complete the task?\n\n",
+        update_check_task,
         function (result) {
           if (result) {
             completedTodos.push(update_check_task);

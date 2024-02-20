@@ -15,33 +15,21 @@ h2 {
     margin: 0 auto;
 }
 
-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
-    color: white;
-    height: 5%;
-    width: 100%;
-    margin: 0 auto;
-}
-
+header,
 footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: black;
     color: white;
     height: 5%;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 main {
     width: 100%;
     height: 90%;
-    margin: 0 auto;
     padding: 0;
-    flex: 1 1 0%;
     background-image: url(ToDo_BG_Desktop.jpg);
     background-size: cover;
 }
@@ -49,47 +37,39 @@ main {
 .middle {
     height: 100%;
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .left {
-    text-align: center;
     height: 25%;
-}
-
-.left-one {
-    height: 50%;
-}
-
-.left-two {
-    height: 50%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
 }
 
 .forms {
     width: 50%;
     display: flex;
-    transform: translate(50%, 45%);
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 8px;
-    justify-content: space-between;
-    flex: 1 1 0%;
     height: 40px;
 }
 
 .forms input {
+    width: 100%;
     flex: 1 1 0%;
     border: none;
     outline: none;
     background: none;
     color: black;
     font-size: 0.9rem;
-    display: block;
-    transition: 0.4s;
     margin-left: 10px;
     margin-right: 10px;
-}
-
-.forms input #title {
-    width: 50%;
 }
 
 .fa-square-plus {
@@ -104,12 +84,7 @@ main {
 }
 
 .navbar {
-    align-items: center;
     width: 50%;
-    position: relative;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 17%);
     display: flex;
     justify-content: space-between;
     background-color: rgb(32, 32, 32);
@@ -121,7 +96,7 @@ main {
     text-decoration: none;
     color: yellow;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 1.3px;
     transition: background-color 0.3s ease-in-out;
     padding: 8px;
@@ -143,13 +118,11 @@ main {
 .right {
     height: 75%;
     width: 50%;
-    margin-left: 25%;
 }
 
 #tasks {
     height: 97%;
     overflow: auto;
-    scrollbar-width: 0.5px;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -161,7 +134,7 @@ main {
 #tasks .task {
     display: flex;
     background: rgba(255, 255, 255, 0.8);
-    padding: 0.6rem;
+    padding: 8px;
     border-radius: 9px;
     margin-bottom: 5px;
     overflow: hidden;
@@ -185,16 +158,12 @@ li.task {
 }
 
 .task .content {
-    display: flex;
-    margin: 0 0;
     width: 85%;
 }
 
 .task .content .text {
     color: black;
     font-size: 1rem;
-    width: 100%;
-    display: block;
     transition: 0.4s;
     word-wrap: break-word;
 }
@@ -333,63 +302,36 @@ li.task {
 
     .left {
         height: 20%;
+        overflow: hidden;
     }
 
-    .forms {
+    .forms,
+    .navbar {
         width: 98%;
-        transform: translate(1%, 30%);
-        height: 40px;
-        margin-left: 0;
-    }
-
-    .fa-square-plus {
-        font-size: 40px;
     }
 
     .navbar a {
         font-size: 14px;
         padding: 12px;
-        align-items: center;
         letter-spacing: 0px;
-    }
-
-    .navbar {
-        width: 98%;
-        align-items: center;
-        height: 45px;
-        position: relative;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 10%);
     }
 
     .right {
         width: 98%;
         height: 80%;
-        margin-left: 1%;
-    }
-
-    #tasks .task .content input {
-        padding-top: 4px;
     }
 
     .task .content {
         width: 73%;
     }
 
-    .task .content .text {
+    .task .content .text,
+    .task .actions button {
         font-size: 0.8rem;
     }
 
     .task .actions {
-        margin-left: 5px;
-        margin-right: 10px;
-        width: 20%;
-    }
-
-    .task .actions button {
-        margin: 0 0;
-        font-size: 0.8rem;
+        width: 27%;
     }
 
     .message-box {
@@ -421,9 +363,9 @@ li.task {
             height: 20%;
         }
 
-        .forms {
+        .forms,
+        .navbar {
             width: 95%;
-            transform: translate(2.5%, 35%);
             height: 45px;
         }
 
@@ -432,29 +374,12 @@ li.task {
         }
 
         .navbar a {
-            font-size: 18px;
             padding: 12px;
-            align-items: center;
-        }
-
-        .navbar {
-            width: 96%;
-            align-items: center;
-            height: 45px;
-            position: relative;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, 17%);
         }
 
         .right {
-            margin-left: 2.5%;
             width: 95%;
             height: 80%;
-        }
-
-        #tasks .task .content input {
-            padding-top: 4px;
         }
 
         .task .content {
@@ -462,13 +387,7 @@ li.task {
         }
 
         .task .actions {
-            margin-left: 5px;
-            margin-right: 10px;
-            width: 20%;
-        }
-
-        .task .actions button {
-            margin: 0 0;
+            width: 25%;
         }
 
         .message-box {
@@ -496,9 +415,9 @@ li.task {
             height: 20%;
         }
 
-        .forms {
+        .forms,
+        .navbar {
             width: 80%;
-            transform: translate(13%, 55%);
             height: 50px;
         }
 
@@ -507,35 +426,16 @@ li.task {
         }
 
         .navbar a {
-            font-size: 18px;
             padding: 16px;
-            align-items: center;
-        }
-
-        .navbar {
-            width: 80%;
-            align-items: center;
-            height: 55px;
-            position: relative;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, 20%);
         }
 
         .right {
-            margin-left: 10%;
             width: 80%;
-            margin-left: 10%;
             height: 80%;
         }
 
         #tasks .task {
             padding: 15px;
-            margin-bottom: 5px;
-        }
-
-        #tasks .task .content input {
-            padding-top: 4px;
         }
     }
 }
@@ -551,9 +451,9 @@ li.task {
             height: 15%;
         }
 
-        .forms {
+        .forms,
+        .navbar {
             width: 80%;
-            transform: translate(13%, 55%);
             height: 50px;
         }
 
@@ -562,44 +462,23 @@ li.task {
         }
 
         .navbar a {
-            font-size: 18px;
             padding: 16px;
-            align-items: center;
-        }
-
-        .navbar {
-            width: 80%;
-            align-items: center;
-            height: 55px;
-            position: relative;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, 20%);
         }
 
         .right {
-            margin-left: 10%;
             width: 80%;
-            margin-left: 10%;
             height: 85%;
         }
 
         #tasks .task {
             padding: 15px;
         }
+    }
+}
 
-        #tasks .task .content input {
-            padding-top: 4px;
-        }
+@media screen and (max-height: 500px) {
 
-        .task .content {
-            width: 85%;
-        }
-
-        .task .actions {
-            margin-left: 25px;
-            margin-right: 10px;
-            width: 10%;
-        }
+    body {
+        height: 500px;
     }
 }
